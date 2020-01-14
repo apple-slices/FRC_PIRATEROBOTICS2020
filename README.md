@@ -20,3 +20,6 @@ https://first.wpi.edu/FRC/roborio/release/docs/cpp/index.html
 https://www.revrobotics.com/content/sw/max/sw-docs/cpp/index.html
 
 https://www.ctr-electronics.com/downloads/api/cpp/html/index.html
+
+IMPORTANT NOTE: Remember to have the root folder of the project open before you install the 
+3rd party libraries!
