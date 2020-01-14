@@ -16,5 +16,7 @@ This list is not comprehensive! At the bare minimum you will need to install the
 API Docs Quick Links
 
 https://first.wpi.edu/FRC/roborio/release/docs/cpp/index.html
+
 https://www.revrobotics.com/content/sw/max/sw-docs/cpp/index.html
+
 https://www.ctr-electronics.com/downloads/api/cpp/html/index.html
