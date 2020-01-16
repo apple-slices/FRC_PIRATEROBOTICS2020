@@ -5,14 +5,6 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-//Adrian Lam
-
-//Jason
-
-//Alan Yu
-
-//Dylan Nguyen
-
 #include "Robot.h"
 
 void Robot::RobotInit() {}
