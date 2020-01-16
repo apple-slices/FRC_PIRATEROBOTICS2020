@@ -21,4 +21,14 @@ class Robot : public frc::TimedRobot {
 
   void TestInit() override;
   void TestPeriodic() override;
+
+  int drive (double LStick, double RStick);
+  int intake (double speed);
+  int shoot(double speed);
+  int spinner(double speed);
+  int getColour();
+  int PIDmove(float dist);
+
 };
+
+
