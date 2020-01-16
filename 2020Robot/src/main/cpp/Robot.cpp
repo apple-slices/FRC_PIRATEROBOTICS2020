@@ -4,12 +4,15 @@
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
-<<<<<<< HEAD
+
 //Adrian Lam
-=======
+
+//Jason
+
 //Alan Yu
 
->>>>>>> 4d76e8c4fa9fae98ac5c462fd39fea43d568cfa2
+//Dylan Nguyen
+
 #include "Robot.h"
 
 void Robot::RobotInit() {}
