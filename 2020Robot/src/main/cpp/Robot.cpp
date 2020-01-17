@@ -7,11 +7,6 @@
 
 //Adrian Lam
 
-//Jason
-
-//Alan Yu
-
-//Dylan Nguyen
 
 #include "Robot.h"
 
