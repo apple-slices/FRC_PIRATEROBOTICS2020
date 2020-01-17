@@ -8,6 +8,7 @@
 
 
 #include "Robot.h"
+#include "DriveBase.h"
 
 void Robot::RobotInit() {}
 
