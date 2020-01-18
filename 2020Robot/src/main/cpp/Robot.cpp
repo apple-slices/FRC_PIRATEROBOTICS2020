@@ -8,6 +8,7 @@
 
 
 #include "Robot.h"
+#include "driveControl.h"
 
 void Robot::RobotInit() {}
 
@@ -15,7 +16,9 @@ void Robot::AutonomousInit() {}
 void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {}
-void Robot::TeleopPeriodic() {}
+void Robot::TeleopPeriodic() {
+    driveBase.arcadeDrive(m_stick.GetRawAxis(1), m_stick.GetRawAxis(2));
+}
 
 void Robot::TestInit() {}
 void Robot::TestPeriodic() {}
@@ -23,3 +26,6 @@ void Robot::TestPeriodic() {}
 #ifndef RUNNING_FRC_TESTS
 int main() { return frc::StartRobot<Robot>(); }
 #endif
+
+
+

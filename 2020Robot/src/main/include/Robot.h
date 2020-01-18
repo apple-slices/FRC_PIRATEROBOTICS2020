@@ -7,9 +7,29 @@
 
 #pragma once
 
+//WPILib includes
 #include <frc/TimedRobot.h>
+#include <frc/Joystick.h>
+#include <frc/drive/DifferentialDrive.h>
+#include <frc/smartdashboard/smartdashboard.h>
+#include <frc/util/color.h>
+
+//Rev robotics includes
+#include "rev/ColorSensorV3.h"
+#include "rev/ColorMatch.h"
+#include "rev/CANSparkMax.h"
+
+//CTRE includes
+#include "ctre/Phoenix.h"
+
+//PHHS includes
+#include "driveControl.h"
+
 
 class Robot : public frc::TimedRobot {
+ private:
+  PHHSDrive driveBase;
+  frc::Joystick m_stick{1};
  public:
   void RobotInit() override;
 
@@ -21,14 +41,4 @@ class Robot : public frc::TimedRobot {
 
   void TestInit() override;
   void TestPeriodic() override;
-
-  int drive (double LStick, double RStick);
-  int intake (double speed);
-  int shoot(double speed);
-  int spinner(double speed);
-  int getColour();
-  int PIDmove(float dist);
-
 };
-
-
