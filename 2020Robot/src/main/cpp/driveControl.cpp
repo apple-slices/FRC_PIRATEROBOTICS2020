@@ -26,32 +26,14 @@ error = 0.1
 
 
 
-void PHHSDrive::arcadeDriveCalculate(float lStick, float rStick){   
+void PHHSDrive::arcadeDriveCalculate(float lStick, float rStick){ 
+   endValueLeft = endValueRight =0;
    if (rStick > error || rStick < -error){ // turning left
       endValueRight = (lStick - rStick); 
       endValueLeft = (lStick + rStick); 
    }
 
-
-
-   if (endValueRight > 1){
-      endValueRight = 1;
-   }
-
-   if (endValueLeft > 1){
-       endValueLeft= 1;
-   }
-
-   if (endValueLeft < -1){
-      endValueLeft = -1;
-   }
-
-   if (endValueRight < -1){
-      endValueRight = -1;
-   }
-
-
-   if (rStick < error && rStick > -error){
+   if ((rStick < error && rStick > -error) ){
       endValueRight = lStick;
       endValueLeft = lStick;
    }
