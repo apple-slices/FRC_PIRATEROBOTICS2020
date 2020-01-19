@@ -29,7 +29,7 @@
 class Robot : public frc::TimedRobot {
  private:
   PHHSDrive driveBase;
-  frc::Joystick m_stick{1};
+  frc::Joystick m_stick{0};
  public:
   void RobotInit() override;
 

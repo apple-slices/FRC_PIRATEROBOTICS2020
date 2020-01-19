@@ -16,7 +16,7 @@ void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {}
 void Robot::TeleopPeriodic() {
-    driveBase.arcadeDriveCalculate(m_stick.GetRawAxis(1), m_stick.GetRawAxis(2));
+    driveBase.arcadeDriveCalculate(m_stick.GetRawAxis(PHHSDrive::axisForUpDown), m_stick.GetRawAxis(PHHSDrive::axisForLeftRight));
 }
 
 void Robot::TestInit() {}
