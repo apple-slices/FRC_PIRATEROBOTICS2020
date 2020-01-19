@@ -16,12 +16,10 @@ WPI_TalonSRX m_indexingMotor{kIndexingMotorID};
 
 public:
 
- 
-
 void suckSpeed(float speed);
  //Button Hold to move motor down until hit ground 
 void lowerIntake(int buttonPress); 
-//BUtton Hold to move intake Upwards 
+//Button Hold to move intake system upwards
 void raiseIntake(int buttonPress);
 
 
