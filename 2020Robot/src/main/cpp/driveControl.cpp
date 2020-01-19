@@ -30,12 +30,12 @@ error = 0.1
 void PHHSDrive::arcadeDriveCalculate(float lStick, float rStick){ 
    endValueLeft = endValueRight =0;
    if (abs(rStick) > error ){ // turning left
-      endValueRight = (lStick - rStick); 
-      endValueLeft = (lStick + rStick); 
+      endValueRight =((((1.0)/(1.0-error))*(lStick - rStick))-error); 
+      endValueLeft = ((((1.0)/(1.0-error))*(lStick + rStick))-error); 
    }
    else if (abs(lStick)>error){
-      endValueRight = lStick;
-      endValueLeft = lStick;
+      endValueRight = ((((1.0)/(1.0-error))*lStick)-error);
+      endValueLeft = ((((1.0)/(1.0-error))*lStick)-error);
    }
 
    lMotorFront->Set(endValueLeft);
