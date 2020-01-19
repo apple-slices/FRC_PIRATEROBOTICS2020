@@ -9,6 +9,7 @@
 
 #include "Robot.h"
 #include "driveControl.h"
+#include "math.h"
 /*
 
 
@@ -28,12 +29,11 @@ error = 0.1
 
 void PHHSDrive::arcadeDriveCalculate(float lStick, float rStick){ 
    endValueLeft = endValueRight =0;
-   if (rStick > error || rStick < -error){ // turning left
+   if (abs(rStick) > error ){ // turning left
       endValueRight = (lStick - rStick); 
       endValueLeft = (lStick + rStick); 
    }
-
-   if ((rStick < error && rStick > -error) ){
+   else if (abs(lStick)>error){
       endValueRight = lStick;
       endValueLeft = lStick;
    }
