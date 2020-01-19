@@ -22,9 +22,14 @@
 //CTRE includes
 #include "ctre/Phoenix.h"
 
+//PHHS includes
+#include "driveControl.h"
 
 
 class Robot : public frc::TimedRobot {
+ private:
+  PHHSDrive driveBase;
+  frc::Joystick m_stick{0};
  public:
   void RobotInit() override;
 
