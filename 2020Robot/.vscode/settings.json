@@ -12,5 +12,13 @@
     "**/.project": true,
     "**/.settings": true,
     "**/.factorypath": true
+<<<<<<< HEAD
+=======
+  },
+  "C_Cpp.default.configurationProvider": "vscode-wpilib",
+  "files.associations": {
+    "*.tcc": "cpp",
+    "*.inc": "cpp"
+>>>>>>> master
   }
 }
