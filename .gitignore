@@ -38,3 +38,6 @@ Thumbs.db
 
 # directory for XML generated after running junit tests through ant
 junit/
+settings.json
+.vscode/launch.json
+.wpilib/wpilib_preferences.json
