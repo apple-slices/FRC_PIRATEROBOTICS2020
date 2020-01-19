@@ -22,9 +22,14 @@
 //CTRE includes
 #include "ctre/Phoenix.h"
 
+#include "intake.h"
 
 
 class Robot : public frc::TimedRobot {
+ private: 
+PHHSIntake intake; 
+frc::Joystick stick{0};
+
  public:
   void RobotInit() override;
 

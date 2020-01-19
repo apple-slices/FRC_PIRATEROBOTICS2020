@@ -6,7 +6,6 @@
 /*----------------------------------------------------------------------------*/
 
 #include "Robot.h"
-#include "intake.h"
 
 void Robot::RobotInit() {}
 
@@ -14,7 +13,11 @@ void Robot::AutonomousInit() {}
 void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {}
-void Robot::TeleopPeriodic() {}
+void Robot::TeleopPeriodic() {
+    //intake.suckSpeed(stick.GetRawAxis(3)); 
+
+
+}
 
 void Robot::TestInit() {}
 void Robot::TestPeriodic() {}
