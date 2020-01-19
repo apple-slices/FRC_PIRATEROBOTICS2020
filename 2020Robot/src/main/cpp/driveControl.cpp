@@ -34,20 +34,20 @@ void PHHSDrive::arcadeDriveCalculate(float lStick, float rStick){
 
 
 
-   if (rStick > 1){
-      rStick = 1;
+   if (endValueRight > 1){
+      endValueRight = 1;
    }
 
-   if (lStick > 1){
-      lStick = 1;
+   if (endValueLeft > 1){
+       endValueLeft= 1;
    }
 
-   if (rStick > -1){
-      rStick = -1;
+   if (endValueLeft < -1){
+      endValueLeft = -1;
    }
 
-   if (lStick > -1){
-      lStick = -1;
+   if (endValueRight < -1){
+      endValueRight = -1;
    }
 
 
