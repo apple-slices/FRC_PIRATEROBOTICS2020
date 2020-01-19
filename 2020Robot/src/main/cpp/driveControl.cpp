@@ -14,101 +14,51 @@
 
 arcadeDrive: Linear turn from |0.1| to Full
 
-Exponent: When toggled, small varaitons result in the robot turning very slightly, less than the 
+Exponent: When toggled, small moves in the right joystick results in the robot turning very slightly
+less than if it was in arcade drive.  Large moves in the right joystick, however, will result in the robot
+turning drastically; much more than if it was in arcade drive. 
 
+error = 0.1 
 */
 
 
+//l=1 ; r=-1 
 
 
-void PHHSDrive::arcadeDrive(float lStick, float rStick){   
 
-
-   if (rStick > error){
-      lMotorFront->Set(lStick);
-      rMotorFront->Set(lStick - correction * rStick);
+void PHHSDrive::arcadeDriveCalculate(float lStick, float rStick){   
+   if (rStick > error || rStick < -error){ // turning left
+      endValueRight = (lStick - rStick); 
+      endValueLeft = (lStick + rStick); 
    }
 
-   if (rStick < -error){
-      lMotorFront->Set(lStick + correction * rStick);
-      rMotorFront->Set(lStick);
+
+
+   if (rStick > 1){
+      rStick = 1;
    }
 
-   if ((rStick < error) && (rStick > -error)){
-      lMotorFront->Set(lStick);
-      rMotorFront->Set(lStick);
+   if (lStick > 1){
+      lStick = 1;
    }
+
+   if (rStick > -1){
+      rStick = -1;
+   }
+
+   if (lStick > -1){
+      lStick = -1;
+   }
+
+
+   if (rStick < error && rStick > -error){
+      endValueRight = lStick;
+      endValueLeft = lStick;
+   }
+
+   lMotorFront->Set(endValueLeft);
+   rMotorFront->Set(endValueRight);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
