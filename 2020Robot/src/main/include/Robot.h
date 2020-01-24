@@ -5,7 +5,6 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#pragma once
 
 //WPILib includes
 #include <frc/TimedRobot.h>
@@ -15,7 +14,7 @@
 #include <frc/util/color.h>
 
 //Rev robotics includes
-#include "rev/ColorSensorV3.h"
+//#include "rev/ColoPrSensorV3.h"
 #include "rev/ColorMatch.h"
 #include "rev/CANSparkMax.h"
 

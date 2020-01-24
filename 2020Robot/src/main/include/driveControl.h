@@ -1,8 +1,8 @@
+
 #pragma once
 
-#include "Robot.h"
 #include "math.h"
-
+#include "rev/CANSparkMax.h"
 class PHHSDrive{
 
     private:
@@ -19,6 +19,10 @@ class PHHSDrive{
     rev::CANSparkMax * lMotorFront = new rev::CANSparkMax(m_lMotorFrontNum, rev::CANSparkMax::MotorType::kBrushless);
     rev::CANSparkMax * rMotorFront = new rev::CANSparkMax(m_rMotorFrontNum, rev::CANSparkMax::MotorType::kBrushless);
     
+    const float p1_correction = ((1.0)/(1.0-m_error)) * (0.5);
+    const float p2_correction = ((1.0)/(1.0-m_error)) * (1.5);
+
+
     public:
     const static int axisForUpDown = 4; //1 is for joystick left
     const static int axisForLeftRight = 1; //2 is for joystick right
