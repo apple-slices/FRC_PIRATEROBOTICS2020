@@ -11,13 +11,13 @@ void PHHSIntake::suckSpeed(float speed)
 
 }
 
-void PHHSIntake::lowerIntake(int buttonPress)
+void PHHSIntake::lowerIntake(float motorSpeed)
 {
-    m_indexingMotor.Set(kDownwardMotor);
+    m_indexingMotor.Set(motorSpeed);
 }
 
-void PHHSIntake::raiseIntake(int buttonPress)
+void PHHSIntake::raiseIntake(float motorSpeed)
 {
-    m_indexingMotor.Set(kUpwardMotor);
+    m_indexingMotor.Set(motorSpeed);
 }
 
