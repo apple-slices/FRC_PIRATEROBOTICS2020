@@ -28,6 +28,7 @@ void Robot::TeleopPeriodic() {
     {
         intake.raiseIntake(PHHSIntake::kUpwardMotor);
     }
+
 }
 
 void Robot::TestInit() {}

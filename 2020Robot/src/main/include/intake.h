@@ -4,12 +4,14 @@
 #include "ctre/Phoenix.h"
 
 
+
 class PHHSIntake
 {
 
 private:
 const int kIntakemotorID = 8;
 const int kIndexingMotorID = 20;
+
 
 const float kIntakeDown = 1.0;
 
@@ -20,8 +22,10 @@ public:
 constexpr static float kDownwardMotor = 1.0;
 constexpr static float kUpwardMotor = -1.0;
 
-constexpr static int kDownwardMotorBtn = 1; //bttn A
-constexpr static int kUpwardMotorBtn = 2; //bttn B
+constexpr static int kDownwardMotorBtn = 1; //button A on Xbox 360 
+constexpr static int kUpwardMotorBtn = 2; //button B on Xbox 360 
+
+
 
 void suckSpeed(float speed);
  //Button Hold to move motor down until hit ground 
