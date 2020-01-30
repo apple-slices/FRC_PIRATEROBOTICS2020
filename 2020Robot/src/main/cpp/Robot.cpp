@@ -29,6 +29,10 @@ void Robot::TeleopPeriodic() {
         intake.raiseIntake(PHHSIntake::kUpwardMotor);
     }
 
+    bool btn1 = -> GetRawButton(1);
+    bool btn2 = -> GetRawButton(2);
+
+
 }
 
 void Robot::TestInit() {}

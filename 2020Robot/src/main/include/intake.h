@@ -3,6 +3,8 @@
 
 #include "ctre/Phoenix.h"
 
+enum ctre::phoenix::motorcontrol::LimitSwitchSource_RemoteTalonSRX 
+
 
 
 class PHHSIntake
@@ -37,5 +39,22 @@ void raiseIntake(float motorSpeed);
 
 };
 
+class PHHSlimitSwitch
+{
+    private:
+
+    bool kLimitSwitchUpID = 1;
+    bool kLimitSwitchDownID = 2;
+
+    
+    WPI_limitswitchUp{kLimitSwitchUpID};
+    WPI_limitSwitchDown{kLimitSwitchDownID};
+
+    public:
+
+
+
+
+}
 
 #endif
