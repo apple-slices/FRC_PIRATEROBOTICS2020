@@ -19,8 +19,11 @@ class PHHSDrive{
     rev::CANSparkMax * lMotorFront = new rev::CANSparkMax(m_lMotorFrontNum, rev::CANSparkMax::MotorType::kBrushless);
     rev::CANSparkMax * rMotorFront = new rev::CANSparkMax(m_rMotorFrontNum, rev::CANSparkMax::MotorType::kBrushless);
     
+    //PieceWise 
     const float p1_correction = m_error * (0.5);
     const float p2_correction = m_error * (1.5);
+
+    //Exponent
 
 
     public:
