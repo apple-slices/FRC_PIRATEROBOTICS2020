@@ -10,7 +10,9 @@
 #include "DriveBase.h"
 #include "intake.h"
 
-void Robot::RobotInit() {}
+void Robot::RobotInit() {
+    
+}
 
 void Robot::AutonomousInit() {}
 void Robot::AutonomousPeriodic() {}
@@ -28,9 +30,6 @@ void Robot::TeleopPeriodic() {
     {
         intake.raiseIntake(PHHSIntake::kUpwardMotor);
     }
-
-    bool btn1 = -> GetRawButton(1);
-    bool btn2 = -> GetRawButton(2);
 
 
 }
