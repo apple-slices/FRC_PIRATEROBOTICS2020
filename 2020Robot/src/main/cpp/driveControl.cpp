@@ -61,13 +61,13 @@ void PHHSDrive::exponentDrive(float lStick, float rStick){
    endValueLeft = endValueRight =0;
    
    if (abs(rStick) > m_error ){ // turning left or right
-      endValueRight = m_correction * ((lStick - rStick)-m_error); 
-      endValueLeft =  m_correction * ((lStick + rStick)-m_error);
+      endValueRight = m_exponential * ((lStick - rStick)-m_error); 
+      endValueLeft =  m_exponential * ((lStick + rStick)-m_error);
    }
   
    else if (abs(lStick)> m_error){ // forward or back
-      endValueRight = m_correction * (lStick - m_error);
-      endValueLeft  = m_correction * (lStick - m_error);
+      endValueRight = m_exponential * (lStick - m_error);
+      endValueLeft  = m_exponential * (lStick - m_error);
    }
    lMotorFront->Set(endValueLeft);
    rMotorFront->Set(endValueRight);

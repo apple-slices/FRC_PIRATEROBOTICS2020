@@ -13,19 +13,24 @@ class PHHSDrive{
     const float m_error = 0.2;
     double m_correction = ((1.0)/(1.0-m_error));
 
+
     float endValueLeft = 0;
     float endValueRight = 0;
 
     rev::CANSparkMax * lMotorFront = new rev::CANSparkMax(m_lMotorFrontNum, rev::CANSparkMax::MotorType::kBrushless);
     rev::CANSparkMax * rMotorFront = new rev::CANSparkMax(m_rMotorFrontNum, rev::CANSparkMax::MotorType::kBrushless);
     
-    const float p1_correction = m_error * (0.5);
-    const float p2_correction = m_error * (1.5);
+    //Ramp Piecewise
+    float p1_correction = m_error * (0.5);
+    float p2_correction = m_error * (1.5);
 
+    //Ramp Exponetial 
+
+    float m_exponential = m_correction * m_correction; 
 
     public:
-    const static int axisForUpDown = 4; //1 is for joystick left
-    const static int axisForLeftRight = 1; //2 is for joystick right
+    const static int axisForUpDown = 1; //1 is for joystick left
+    const static int axisForLeftRight = 4; //2 is for joystick right
 
     void arcadeDrive(float lStick, float rStick);
     void exponentDrive(float lStick, float rStick);
