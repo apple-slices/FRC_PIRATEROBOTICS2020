@@ -22,11 +22,13 @@
 //CTRE includes
 #include "ctre/Phoenix.h"
 
-
+//Spinner
+#include "spinner.h"
 
 class Robot : public frc::TimedRobot {
 private:
-PHHSSpinner  spinner;
+PHHSSpinner spinner;
+
 frc::Joystick m_stick{0};
 
 
