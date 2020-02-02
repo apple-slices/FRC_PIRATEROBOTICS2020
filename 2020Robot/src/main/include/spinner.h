@@ -1,4 +1,7 @@
-#include "Robot.h"
+#ifndef SPINNER
+#define SPINNER
+
+#include "ctre/Phoenix.h"
 
 class PHHSSpinner
 {
@@ -16,3 +19,5 @@ class PHHSSpinner
 
 
 };
+
+#endif 
