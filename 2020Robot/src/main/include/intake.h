@@ -14,10 +14,11 @@ const int kIntakemotorID = 8;
 const int kIndexingMotorID = 20;
 
 //Motor Control limits 
-const int kPeakCurrentAmp = 15;
-const int kPeakTimeMs = 0;
-const int kContinCurrentAmps = 10;
-const int kTimeoutMs = 0;
+const int kPeakCurrentAmp = 15; //Max. before tirggering current limit 
+const int kContinCurrentAmps = 0; //hold current after limit is tirgged
+//Motor Control Time 
+const int kTimeoutMs = 0; //How much time to check (if 0 then it will skip the check)
+const int kPeakTimeMs = 0; //How long after peak current to stop motors
 
 
 
@@ -34,12 +35,14 @@ constexpr static int kDownwardMotorBtn = 1; //button A on Xbox 360
 constexpr static int kUpwardMotorBtn = 2; //button B on Xbox 360 
 
 void suckSpeed(float speed);
- //Button Hold to move motor down until hit ground 
+ //Button Toggle to move motor down until hit ground 
 void lowerIntake(float motorSpeed); 
-//Button Hold to move intake system upwards
+//Button Toggle to move intake system upwards
 void raiseIntake(float motorSpeed);
 
 
 void motorInit();
+
+void robotInit();
 };
 #endif

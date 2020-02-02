@@ -12,6 +12,8 @@
 
 void Robot::RobotInit() {
     
+   intake.robotInit(); 
+
    intake.motorInit();
 } 
 

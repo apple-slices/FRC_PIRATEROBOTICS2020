@@ -21,6 +21,13 @@ void PHHSIntake::raiseIntake(float motorSpeed)
     m_indexingMotor.Set(motorSpeed);
 }
 
+void PHHSIntake::robotInit()
+{
+    //Change kTimeoutMs if needed to because the docum. says 50
+    m_indexingMotor.ConfigFactoryDefault(kTimeoutMs);
+    m_intakeMotor.ConfigFactoryDefault(kTimeoutMs);
+}
+
 
 void PHHSIntake::motorInit()
 {
@@ -42,7 +49,7 @@ void PHHSIntake::motorInit()
 
     //closed loop to limit amp
 
-    m_indexingMotor.SetNeutralMode(NeutralMode::Brake);
+   /* m_indexingMotor.SetNeutralMode(NeutralMode::Brake);
     m_intakeMotor.SetNeutralMode(NeutralMode::Brake);
 
     m_indexingMotor.Config_kP(0, 2.0, 10);
@@ -55,10 +62,13 @@ void PHHSIntake::motorInit()
     m_intakeMotor.Config_kD(0, 0.0, 10);
 
     m_indexingMotor.Config_kF(0, 0.0, 10);
-    m_intakeMotor.Config_kF(0, 0.0, 10);
+    m_intakeMotor.Config_kF(0, 0.0, 10); */
 
     
     
 }
+
+
+
 
 
