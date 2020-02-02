@@ -25,7 +25,11 @@
 
 
 class Robot : public frc::TimedRobot {
- public:
+private:
+PHHSSpinner  spinner;
+frc:joystick m_stick{0};
+
+public:
 
 
   void RobotInit() override;
