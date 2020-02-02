@@ -27,7 +27,8 @@
 class Robot : public frc::TimedRobot {
 private:
 PHHSSpinner  spinner;
-frc:joystick m_stick{0};
+frc::Joystick m_stick{0};
+
 
 public:
 
