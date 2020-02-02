@@ -12,7 +12,7 @@ private:
 //motor IDs
 const int kIntakemotorID = 8;
 const int kIndexingMotorID = 20;
-//Motor Control Amp
+//Motor Control limits 
 const int kPeakCurrentAmp = 15;
 const int kPeakTimeMs = 0;
 const int kContinCurrentAmps = 10;
