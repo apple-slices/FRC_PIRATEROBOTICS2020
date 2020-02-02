@@ -12,7 +12,8 @@
 
 void Robot::RobotInit() {
     
-}
+   intake.motorInit();
+} 
 
 void Robot::AutonomousInit() {}
 void Robot::AutonomousPeriodic() {}
@@ -30,6 +31,7 @@ void Robot::TeleopPeriodic() {
     {
         intake.raiseIntake(PHHSIntake::kUpwardMotor);
     }
+
 
 
 }

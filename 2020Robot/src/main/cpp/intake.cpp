@@ -21,3 +21,21 @@ void PHHSIntake::raiseIntake(float motorSpeed)
     m_indexingMotor.Set(motorSpeed);
 }
 
+
+void PHHSIntake::motorInit()
+{
+    
+    m_indexingMotor.SetInverted(false);
+    m_intakeMotor.SetInverted(false);
+
+    m_indexingMotor.ConfigForwardLimitSwitchSource(LimitSwitchSource::LimitSwitchSource_FeedbackConnector, LimitSwitchNormal::LimitSwitchNormal_NormallyOpen, 0);
+    m_intakeMotor.ConfigReverseLimitSwitchSource(LimitSwitchSource::LimitSwitchSource_FeedbackConnector,LimitSwitchNormal::LimitSwitchNormal_NormallyOpen, 0);
+
+    m_intakeMotor.ConfigPeakCurrentLimit(kPeakCurrentAmp, kPeakTimeMs);
+    m_indexingMotor.ConfigPeakCurrentLimit(kPeakCurrentAmp, kPeakTimeMs);
+
+    m_indexingMotor.ConfigContinuousCurrentLimit(kContinCurrentAmps, kTimeoutMs);
+    
+}; 
+
+
