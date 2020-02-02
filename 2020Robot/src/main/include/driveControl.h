@@ -8,9 +8,11 @@ class PHHSDrive{
     private:
     //General
     const int m_lMotorFrontNum = 3;
-    const int m_rMotorFrontNum = 13;
+    const int m_rMotorFrontNum = 1;
+    const int f_rMotorFrontNum = 16;
+    const int f_rMotorFrontNum = 17;
     const double m_neutral = 0; 
-    const float m_error = 0.2;
+    const float m_error = 0.1;
     double m_correction = ((1.0)/(1.0-m_error));
 
 
@@ -21,8 +23,8 @@ class PHHSDrive{
     rev::CANSparkMax * rMotorFront = new rev::CANSparkMax(m_rMotorFrontNum, rev::CANSparkMax::MotorType::kBrushless);
     
     //Ramp Piecewise
-    float p1_correction = m_error * (0.5);
-    float p2_correction = m_error * (1.5);
+    float p1_correction = m_error * (0.25);
+    float p2_correction = m_error * (2);
 
     //Ramp Exponetial 
 
