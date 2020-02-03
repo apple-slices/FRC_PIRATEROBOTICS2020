@@ -14,9 +14,12 @@ void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {}
 void Robot::TeleopPeriodic() {
-    {
-        
-    }
+    
+        if()
+        {
+            
+        }
+    
 }
 
 void Robot::TestInit() {}

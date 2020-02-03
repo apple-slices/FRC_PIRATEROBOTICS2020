@@ -9,6 +9,9 @@ class PHHSSpinner
     private:
     const int kSpinnerMotorID = 1;
 
+
+    const int kSpinnerMotorOn = 1; //Button A on Xbox Controller 
+
     
 
     WPI_TalonSRX m_spinnerMotor{kSpinnerMotorID}; //this is the motor that spins the wheel
@@ -17,7 +20,7 @@ class PHHSSpinner
 
     const float kSpinnerHoriz = 1.0;
 
-    const int kSpinOn = 
+    
 
     void spinnerOn(float speed);
 
