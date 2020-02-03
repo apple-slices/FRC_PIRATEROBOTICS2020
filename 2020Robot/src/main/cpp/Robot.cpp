@@ -12,7 +12,7 @@
 
 void Robot::RobotInit() {
     
-   intake.robotInit(); 
+   intake.robotMotorInit(); 
 
    intake.motorInit();
 } 
@@ -29,12 +29,21 @@ void Robot::TeleopPeriodic() {
     {
         intake.lowerIntake(PHHSIntake::kDownwardMotor);
     }
+
     if(m_stick.GetRawButton(PHHSIntake::kUpwardMotorBtn))
     {
         intake.raiseIntake(PHHSIntake::kUpwardMotor);
     }
 
+    if(m_stick.GetRawButton(PHHSIntake::kIntakemotorBtn))
+    {
+        intake.suckSpeed(PHHSIntake::kIntakeMotor);
+    }
 
+    if(m_stick.GetRawButton(PHHSIntake::kIntakeMotorOffBtn))
+    {
+        intake.suckSpeedOff(PHHSIntake::kIntakeMotorOff);
+    }
 
 }
 
