@@ -15,9 +15,9 @@ void Robot::AutonomousPeriodic() {}
 void Robot::TeleopInit() {}
 void Robot::TeleopPeriodic() {
     
-        if()
+        if(m_stick.GetRawButton(PHHSSpinner::kSpinnerMotorOnBtn))
         {
-            
+            spinner.kSpinnerHoriz()
         }
     
 }
