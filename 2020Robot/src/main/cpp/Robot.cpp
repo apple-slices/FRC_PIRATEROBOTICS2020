@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 #include "Robot.h"
+#include "spinner.h"
 
 void Robot::RobotInit() {}
 
@@ -17,7 +18,12 @@ void Robot::TeleopPeriodic() {
     
         if(m_stick.GetRawButton(PHHSSpinner::kSpinnerMotorOnBtn))
         {
-            spinner.kSpinnerHoriz()
+            spinner.spinnerOn(PHHSSpinner::kSpinnerHoriz);
+        }
+
+        if(m_stick.GetRawButton(PHHSSpinner::kSpinnerMotorOffBtn))
+        {
+            spinner.spinnerOff(PHHSSpinner::kSpinnerHorizOff);
         }
     
 }

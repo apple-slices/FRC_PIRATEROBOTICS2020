@@ -1,3 +1,4 @@
+#pragma once
 #ifndef SPINNER
 #define SPINNER
 
@@ -14,13 +15,17 @@ class PHHSSpinner
 
     public:
 
-    const float kSpinnerHoriz = 1.0;
+    constexpr static float kSpinnerHoriz = 1.0;
+    constexpr static float kSpinnerHorizOff = 0.0;
 
     constexpr static int kSpinnerMotorOnBtn = 1; //Button A on Xbox Controller 
+    constexpr static int kSpinnerMotorOffBtn = 2; //ButtonB on Xbox 360 Controller
 
     
 
     void spinnerOn(float speed);
+
+    void spinnerOff(float speed);
 
 
 };
