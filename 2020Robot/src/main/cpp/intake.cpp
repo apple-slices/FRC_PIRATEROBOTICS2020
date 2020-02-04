@@ -40,9 +40,11 @@ void PHHSIntake::motorInit()
     m_indexingMotor.SetInverted(false);
     m_intakeMotor.SetInverted(false);
 
+    //Code for the limit switch 
     m_indexingMotor.ConfigForwardLimitSwitchSource(LimitSwitchSource::LimitSwitchSource_FeedbackConnector, LimitSwitchNormal::LimitSwitchNormal_NormallyOpen, kTimeoutMs);
     m_intakeMotor.ConfigReverseLimitSwitchSource(LimitSwitchSource::LimitSwitchSource_FeedbackConnector,LimitSwitchNormal::LimitSwitchNormal_NormallyOpen, kTimeoutMs);
 
+    //code for amp limit 
     m_intakeMotor.ConfigPeakCurrentLimit(kPeakCurrentAmpIntake, kPeakTimeMs);
     m_indexingMotor.ConfigPeakCurrentLimit(kPeakCurrentAmpIndexing, kPeakTimeMs);
 
@@ -52,7 +54,6 @@ void PHHSIntake::motorInit()
     m_indexingMotor.ConfigContinuousCurrentLimit(kContinCurrentAmps, kTimeoutMs);
     m_intakeMotor.ConfigContinuousCurrentLimit(kContinCurrentAmps, kTimeoutMs);
 
-    
 }
 
 
