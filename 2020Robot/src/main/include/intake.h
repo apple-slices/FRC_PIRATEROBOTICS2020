@@ -14,7 +14,8 @@ const int kIntakemotorID = 8;
 const int kIndexingMotorID = 20;
 
 //Motor Control limits 
-const int kPeakCurrentAmp = 15; //Max. before tirggering current limit 
+const int kPeakCurrentAmpIntake = 30; //Max. before tirggering current limit 
+const int kPeakCurrentAmpIndexing = 15; //Max. before tiggering current limit 
 const int kContinCurrentAmps = 0; //hold current after limit is tirgged
 
 //Motor Control Time 
