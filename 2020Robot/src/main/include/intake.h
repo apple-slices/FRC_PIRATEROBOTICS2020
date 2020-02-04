@@ -38,8 +38,8 @@ constexpr static float kIntakeMotorOff = 0.0;
 //Joystick ID 
 constexpr static int kDownwardMotorBtn = 1; //button A on Xbox 360 
 constexpr static int kUpwardMotorBtn = 2; //button B on Xbox 360 
-constexpr static int kIntakemotorBtn = 3; //Button " " on the Xbox 360 
-constexpr static int kIntakeMotorOffBtn = 4; //Button " " on the Xbox 360 
+constexpr static int kIntakemotorBtn = 3; //Button "X" on the Xbox 360 
+constexpr static int kIntakeMotorOffBtn = 4; //Button "Y" on the Xbox 360 
 
 //Button Toggle to turn on Intake Motor
 void suckSpeed(float speed);
