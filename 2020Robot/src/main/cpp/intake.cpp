@@ -52,24 +52,6 @@ void PHHSIntake::motorInit()
     m_indexingMotor.ConfigContinuousCurrentLimit(kContinCurrentAmps, kTimeoutMs);
     m_intakeMotor.ConfigContinuousCurrentLimit(kContinCurrentAmps, kTimeoutMs);
 
-    //closed loop to limit amp
-
-   /* m_indexingMotor.SetNeutralMode(NeutralMode::Brake);
-    m_intakeMotor.SetNeutralMode(NeutralMode::Brake);
-
-    m_indexingMotor.Config_kP(0, 2.0, 10);
-    m_intakeMotor.Config_kP(0, 2.0, 10);
-
-    m_indexingMotor.Config_kI(0, 0.0, 10);
-    m_intakeMotor.Config_kI(0, 0.0, 10);
-
-    m_indexingMotor.Config_kD(0, 0.0, 10);
-    m_intakeMotor.Config_kD(0, 0.0, 10);
-
-    m_indexingMotor.Config_kF(0, 0.0, 10);
-    m_intakeMotor.Config_kF(0, 0.0, 10); */
-
-    
     
 }
 
