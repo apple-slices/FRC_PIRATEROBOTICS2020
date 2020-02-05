@@ -7,12 +7,10 @@ class PHHSDrive{
 
     private:
     //General
-    const int m_lMotorFrontNum = 3;
+    const int m_lMotorFrontNum = 3; //3 and 1 for pathfinder; 
     const int m_rMotorFrontNum = 1;
-    const int f_rMotorFrontNum = 16;
-    const int f_rMotorFrontNum = 17;
     const double m_neutral = 0; 
-    const float m_error = 0.1;
+    const float m_error = 0.15;
     double m_correction = ((1.0)/(1.0-m_error));
 
 

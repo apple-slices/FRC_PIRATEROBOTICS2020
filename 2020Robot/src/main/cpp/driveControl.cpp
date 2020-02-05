@@ -17,7 +17,7 @@ void PHHSDrive::arcadeDrive(float lStick, float rStick){
       endValueLeft =  m_correction * ((lStick + rStick)-m_error);
    }
   
-   else if (abs(lStick)> m_error){ // forward or back
+   else if (abs(lStick)> m_error  && abs(rStick)< m_error)){ // forward or back
       endValueRight = m_correction * -1 * (lStick - m_error);
       endValueLeft  = m_correction * -1 * (lStick - m_error);
    }
@@ -26,8 +26,7 @@ void PHHSDrive::arcadeDrive(float lStick, float rStick){
 
    lMotorFront->Set(endValueLeft);
    rMotorFront->Set(endValueRight);
-   lMotorFront->Set(endValueLeft);
-   rMotorFront->Set(endValueRight);
+
 }
 
 void PHHSDrive::pieceWiseDrive(float lStick, float rStick){
