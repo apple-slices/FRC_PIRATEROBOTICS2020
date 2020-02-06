@@ -10,6 +10,12 @@
 #include <frc/TimedRobot.h>
 
 class Robot : public frc::TimedRobot {
+private:
+ class PHHSShooter
+
+  
+
+
  public:
   void RobotInit() override;
 
