@@ -8,8 +8,22 @@
 #pragma once
 #ifndef SHOOTER 
 
-#include <Joystick.h>
+//WPILib includes
 #include <frc/TimedRobot.h>
+#include <frc/Joystick.h>
+#include <frc/drive/DifferentialDrive.h>
+#include <frc/smartdashboard/smartdashboard.h>
+#include <frc/util/color.h>
+
+//Rev robotics includes
+#include "rev/ColorSensorV3.h"
+#include "rev/ColorMatch.h"
+#include "rev/CANSparkMax.h"
+
+//CTRE includes
+#include "ctre/Phoenix.h"
+
+#include "shooter.h"
 
 class Robot : public frc::TimedRobot {
 private:
