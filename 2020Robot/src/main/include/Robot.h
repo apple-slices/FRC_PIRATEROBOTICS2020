@@ -13,9 +13,10 @@
 
 class Robot : public frc::TimedRobot {
 private:
+
 PHHSShooter shooter;
 
- frc::joystick m_stick{0};
+ frc::Joystick m_stick{0};
 
  public:
   void RobotInit() override;
