@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#pragma once
+#pragma once 
 
 //WPILib includes
 #include <frc/TimedRobot.h>
@@ -23,13 +23,14 @@
 #include "ctre/Phoenix.h"
 
 //PHHS includes
+#include "intake.h"
 #include "driveControl.h"
-
 
 class Robot : public frc::TimedRobot {
  private:
-  PHHSDrive driveBase;
-  frc::Joystick m_stick{0};
+  PHHSIntake    intake;
+  PHHSDrive     driveBase;
+  frc::Joystick m_stick{0}; 
  public:
   void RobotInit() override;
 

@@ -8,15 +8,43 @@
 #include "Robot.h"
 #include "driveControl.h"
 #include "DriveBase.h"
+#include "intake.h"
 
-void Robot::RobotInit() {}
+void Robot::RobotInit() {
+    
+   intake.robotMotorInit(); 
+
+   intake.motorInit();
+} 
 
 void Robot::AutonomousInit() {}
 void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {}
 void Robot::TeleopPeriodic() {
+     
     driveBase.arcadeDriveCalculate(m_stick.GetRawAxis(PHHSDrive::axisForUpDown), m_stick.GetRawAxis(PHHSDrive::axisForLeftRight));
+    
+    if(m_stick.GetRawButton(PHHSIntake::kDownwardMotorBtn))
+    {
+        intake.lowerIntake(PHHSIntake::kDownwardMotor);
+    }
+
+    if(m_stick.GetRawButton(PHHSIntake::kUpwardMotorBtn))
+    {
+        intake.raiseIntake(PHHSIntake::kUpwardMotor);
+    }
+
+    if(m_stick.GetRawButton(PHHSIntake::kIntakemotorBtn))
+    {
+        intake.suckSpeed(PHHSIntake::kIntakeMotor);
+    }
+
+    if(m_stick.GetRawButton(PHHSIntake::kIntakeMotorOffBtn))
+    {
+        intake.suckSpeedOff(PHHSIntake::kIntakeMotorOff);
+    }
+
 }
 
 void Robot::TestInit() {}
