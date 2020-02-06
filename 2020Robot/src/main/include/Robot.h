@@ -6,6 +6,8 @@
 /*----------------------------------------------------------------------------*/
 
 #pragma once
+#ifndef SHOOTER 
+
 
 #include <frc/TimedRobot.h>
 
@@ -13,7 +15,7 @@ class Robot : public frc::TimedRobot {
 private:
 PHHSShooter shooter;
 
- frc::Joystick m_stick{0};
+ frc::joystick m_stick{0};
 
  public:
   void RobotInit() override;
@@ -27,3 +29,5 @@ PHHSShooter shooter;
   void TestInit() override;
   void TestPeriodic() override;
 };
+
+#endif
