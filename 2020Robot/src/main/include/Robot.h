@@ -22,7 +22,6 @@
 
 //CTRE includes
 #include "ctre/Phoenix.h"
-
 #include "shooter.h"
 
 class Robot : public frc::TimedRobot {
