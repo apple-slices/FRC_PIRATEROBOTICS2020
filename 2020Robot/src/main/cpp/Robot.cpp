@@ -7,6 +7,7 @@
 
 //Adrian Lam
 
+#pragma once
 
 #include "Robot.h"
 #include "Shooter.h"
