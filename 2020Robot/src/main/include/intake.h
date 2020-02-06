@@ -10,13 +10,13 @@ class PHHSIntake
 
 private:
 //motor IDs
-const int kIntakemotorID = 8;
-const int kIndexingMotorID = 20;
+const int kIntakemotorID = 1;
+const int kIndexingMotorID = 0;
 
 //Motor Control limits 
-const int kPeakCurrentAmpIntake = 30; //Max. before tirggering current limit 
-const int kPeakCurrentAmpIndexing = 15; //Max. before tiggering current limit 
-const int kContinCurrentAmps = 0; //hold current after limit is tirgged
+const int kPeakCurrentAmpIntake = 40; //Max. before tirggering current limit 
+const int kPeakCurrentAmpIndexing = 40; //Max. before tiggering current limit 
+const int kContinCurrentAmps = 40; //hold current after limit is tirgged
 
 //Motor Control Time 
 const int kTimeoutMs = 0; //How much time to check (if 0 then it will skip the check)
