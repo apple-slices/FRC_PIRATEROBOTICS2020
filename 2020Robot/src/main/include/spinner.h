@@ -8,7 +8,7 @@ class PHHSSpinner
 {
 
     private:
-    constexpr static int kSpinnerMotorID = 1;
+    constexpr static int kSpinnerMotorID = 2;
 
 
     WPI_TalonSRX m_spinnerMotor{kSpinnerMotorID}; //this is the motor that spins the wheel
