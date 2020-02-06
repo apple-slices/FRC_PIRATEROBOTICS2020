@@ -9,8 +9,9 @@ class PHHSShooter
     
     public:
     
-    constexpr static float  kShooterMotor = 1.0;
-   
+    constexpr static float kShooterMotor = 1.0;
+    constexpr static float kShooterMotorOff = 0.0;
+
     constexpr static int kShooterMotorOnBtn = 1; //Button A on Xbox 360
     constexpr static int kShooterMotorOffBtn = 2; //Button B on Xbox 360
 
