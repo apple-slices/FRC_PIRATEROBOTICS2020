@@ -18,7 +18,13 @@ void Robot::AutonomousInit() {}
 void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {}
-void Robot::TeleopPeriodic() {}
+void Robot::TeleopPeriodic() 
+{
+    if(PHHSShooter::
+    {
+        m_stick.
+    }
+}
 
 void Robot::TestInit() {}
 void Robot::TestPeriodic() {}
