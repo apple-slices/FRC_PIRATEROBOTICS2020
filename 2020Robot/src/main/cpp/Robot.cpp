@@ -7,6 +7,7 @@
 
 //Adrian Lam
 
+#pragma once
 
 #include "Robot.h"
 #include "Shooter.h"
@@ -17,7 +18,19 @@ void Robot::AutonomousInit() {}
 void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {}
-void Robot::TeleopPeriodic() {}
+void Robot::TeleopPeriodic() 
+{
+    if(m_stick.GetRawButton(PHHSShooter::kShooterMotorOnBtn))
+    {
+        shooter.shooterOn(PHHSShooter::kShooterMotor);
+    }
+
+
+    if(m_stick.GetRawButton(PHHSShooter::kShooterMotorOffBtn))
+    {
+        shooter.shooterOff(PHHSShooter::kShooterMotorOff);
+    }
+}
 
 void Robot::TestInit() {}
 void Robot::TestPeriodic() {}
