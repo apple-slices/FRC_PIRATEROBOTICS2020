@@ -10,7 +10,7 @@ class PHHSShooter
 
 private:
 //motor IDs
-const int kShooterMotorID = 1;
+const int kShooterMotorID = 2;
 
 WPI_TalonSRX m_shooterMotor{kShooterMotorID};
 
