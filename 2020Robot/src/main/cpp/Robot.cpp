@@ -20,9 +20,9 @@ void Robot::AutonomousPeriodic() {}
 void Robot::TeleopInit() {}
 void Robot::TeleopPeriodic() 
 {
-    if(PHHSShooter::
+    if(m_stick.GetRawButton(PHHSShooter::kShooterMotorOnBtn))
     {
-        m_stick.
+        
     }
 }
 
