@@ -7,7 +7,7 @@ class PHHSDrive{
 
     private:
     //General
-    const int m_lMotorFrontNum = 3;
+    const int m_lMotorFrontNum = 1;
     const int m_rMotorFrontNum = 13;
     const double m_neutral = 0; 
     const float m_error = 0.1;
@@ -20,8 +20,8 @@ class PHHSDrive{
     rev::CANSparkMax * rMotorFront = new rev::CANSparkMax(m_rMotorFrontNum, rev::CANSparkMax::MotorType::kBrushless);
     
     public:
-    const static int axisForUpDown = 4; //1 is for joystick left
-    const static int axisForLeftRight = 1; //2 is for joystick right
+    const static int axisForUpDown = 1; //1 is for joystick left
+    const static int axisForLeftRight = 2; //2 is for joystick right
 
     void arcadeDriveCalculate(float lStick, float rStick);
     void exponentDrive(float lStick, float rStick);
