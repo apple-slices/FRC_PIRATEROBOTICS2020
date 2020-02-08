@@ -7,10 +7,35 @@
 
 #pragma once
 
+//WPILib includes
 #include <frc/TimedRobot.h>
+#include <frc/Joystick.h>
+#include <frc/drive/DifferentialDrive.h>
+#include <frc/smartdashboard/smartdashboard.h>
+#include <frc/util/color.h>
+
+//Rev robotics includes
+#include "rev/ColorSensorV3.h"
+#include "rev/ColorMatch.h"
+#include "rev/CANSparkMax.h"
+
+//CTRE includes
+#include "ctre/Phoenix.h"
+
+//Spinner
+#include "spinner.h"
 
 class Robot : public frc::TimedRobot {
- public:
+private:
+
+PHHSSpinner spinner;
+
+frc::Joystick m_stick{0};
+
+
+public:
+
+
   void RobotInit() override;
 
   void AutonomousInit() override;

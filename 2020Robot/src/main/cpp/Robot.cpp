@@ -5,17 +5,15 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-//Jason
-
-//Alan Yu
-
-//Dylan Nguyen
-
 #include "Robot.h"
+<<<<<<< HEAD
 #include "rev/ColorSensorV3.h"
 #include <frc/smartdashboard/smartdashboard.h>
 
 rev::ColorSensorV3 m_colorSensor{ frc::I2C::Port::kOnboard};
+=======
+#include "spinner.h"
+>>>>>>> origin/spinner
 
 void Robot::RobotInit() {}
 
@@ -24,6 +22,7 @@ void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {}
 void Robot::TeleopPeriodic() {
+<<<<<<< HEAD
     frc::Color detectedColor = m_colorSensor.GetColor();
 
     /**
@@ -59,6 +58,19 @@ void Robot::TeleopPeriodic() {
     uint32_t proximity = m_colorSensor.GetProximity();
 
     frc::SmartDashboard::PutNumber("Proximity", proximity);
+=======
+    
+        if(m_stick.GetRawButton(PHHSSpinner::kSpinnerMotorOnBtn))
+        {
+            spinner.spinnerOn(PHHSSpinner::kSpinnerHoriz);
+        }
+
+        if(m_stick.GetRawButton(PHHSSpinner::kSpinnerMotorOffBtn))
+        {
+            spinner.spinnerOff(PHHSSpinner::kSpinnerHorizOff);
+        }
+    
+>>>>>>> origin/spinner
 }
 
 void Robot::TestInit() {}
