@@ -39,7 +39,12 @@ void Robot::TeleopPeriodic() {
     frc::SmartDashboard::PutNumber("Green", detectedColor.green);
     frc::SmartDashboard::PutNumber("Blue", detectedColor.blue);
     frc::SmartDashboard::PutNumber("IR", IR);
-
+    if(detectColor.red>detectColor.green  && detectColor.red>detectColor.blue){
+         spinner.spinnerOn(PHHSSpinner::kSpinnerHoriz);
+    }
+    else {
+          spinner.spinnerOff(PHHSSpinner::kSpinnerHorizOff);
+    }
     /**
      * In addition to RGB IR values, the color sensor can also return an 
      * infrared proximity value. The chip contains an IR led which will emit
