@@ -9,6 +9,7 @@
 #include "driveControl.h"
 #include "DriveBase.h"
 #include "intake.h"
+#include "autonomous.h"
 
 void Robot::RobotInit() {
     
