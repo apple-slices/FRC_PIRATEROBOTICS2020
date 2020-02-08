@@ -24,8 +24,10 @@ void PHHSDrive::arcadeDrive(float lStick, float rStick){
 
 
 
-   lMotorFront->Set(endValueLeft);
-   rMotorFront->Set(endValueRight);
+   l1MotorFront->Set(endValueLeft);  
+   l2MotorFront->Set(endValueLeft);
+   r1MotorFront->Set(endValueRight);
+   r2MotorFront->Set(endValueRight);
 
 }
 
