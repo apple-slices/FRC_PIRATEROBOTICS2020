@@ -55,8 +55,12 @@ void PHHSDrive::pieceWiseDrive(float lStick, float rStick){
          endValueLeft  = m_correction * (lStick - m_error);
       }
    }
-   lMotorFront->Set(endValueLeft);
-   rMotorFront->Set(endValueRight);
+
+
+   l1MotorFront->Set(endValueLeft);  
+   l2MotorFront->Set(endValueLeft);
+   r1MotorFront->Set(endValueRight);
+   r2MotorFront->Set(endValueRight);
 }
 
 
@@ -72,8 +76,11 @@ void PHHSDrive::exponentDrive(float lStick, float rStick){
       endValueRight = m_exponential * (lStick - m_error);
       endValueLeft  = m_exponential * (lStick - m_error);
    }
-   lMotorFront->Set(endValueLeft);
-   rMotorFront->Set(endValueRight);
+
+   l1MotorFront->Set(endValueLeft);  
+   l2MotorFront->Set(endValueLeft);
+   r1MotorFront->Set(endValueRight);
+   r2MotorFront->Set(endValueRight);
 }
 
 

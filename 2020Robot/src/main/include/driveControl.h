@@ -10,8 +10,8 @@ class PHHSDrive{
     const int m_1lMotorFrontNum = 12; //3 and 1 for pathfinder; 
     const int m_2lMotorFrontNum = 13;
 
-    const int r_1lMotorFrontNum = 1; //3 and 1 for pathfinder; 
-    const int r_2lMotorFrontNum = 3;
+    const int m_1rMotorFrontNum = 1; //3 and 1 for pathfinder; 
+    const int m_2rMotorFrontNum = 3;
     const double m_neutral = 0; 
     const float m_error = 0.15;
     double m_correction = ((1.0)/(1.0-m_error));
@@ -21,9 +21,9 @@ class PHHSDrive{
     float endValueRight = 0;
 
     rev::CANSparkMax * l1MotorFront = new rev::CANSparkMax(m_1lMotorFrontNum, rev::CANSparkMax::MotorType::kBrushless);
+    rev::CANSparkMax * r1MotorFront = new rev::CANSparkMax(m_2rMotorFrontNum, rev::CANSparkMax::MotorType::kBrushless);
+    rev::CANSparkMax * l2MotorFront = new rev::CANSparkMax(m_1lMotorFrontNum, rev::CANSparkMax::MotorType::kBrushless);
     rev::CANSparkMax * r2MotorFront = new rev::CANSparkMax(m_2rMotorFrontNum, rev::CANSparkMax::MotorType::kBrushless);
-    rev::CANSparkMax * l1MotorFront = new rev::CANSparkMax(r_1lMotorFrontNum, rev::CANSparkMax::MotorType::kBrushless);
-    rev::CANSparkMax * r2MotorFront = new rev::CANSparkMax(r_2rMotorFrontNum, rev::CANSparkMax::MotorType::kBrushless);
     
     //Ramp Piecewise
     float p1_correction = m_error * (0.25);
