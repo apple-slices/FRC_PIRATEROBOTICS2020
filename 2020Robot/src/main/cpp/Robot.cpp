@@ -18,10 +18,11 @@ void Robot::RobotInit() {
    intake.motorInit();
 } 
 
-void Robot::AutonomousInit() {
+void Robot::AutonomousInit() {}
+void Robot::AutonomousPeriodic() {
     
+
 }
-void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {}
 void Robot::TeleopPeriodic() {
