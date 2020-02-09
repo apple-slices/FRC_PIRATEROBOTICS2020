@@ -8,7 +8,11 @@
 #include "Robot.h"
 #include "spinner.h"
 
-void Robot::RobotInit() {}
+void Robot::RobotInit() {
+
+    void spinnerInit();
+
+}
 
 void Robot::AutonomousInit() {}
 void Robot::AutonomousPeriodic() {

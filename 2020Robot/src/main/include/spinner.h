@@ -28,6 +28,9 @@ class PHHSSpinner
     void spinnerOff(float speed);
 
 
+    void SpinnerInit();
+
+
 };
 
 #endif 
