@@ -16,7 +16,9 @@ rev::ColorSensorV3 m_colorSensor{ frc::I2C::Port::kOnboard};
 void Robot::RobotInit() {}
 
 void Robot::AutonomousInit() {}
-void Robot::AutonomousPeriodic() {}
+void Robot::AutonomousPeriodic() {
+    
+}
 
 void Robot::TeleopInit() {}
 void Robot::TeleopPeriodic() {
