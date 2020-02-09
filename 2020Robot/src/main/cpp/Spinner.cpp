@@ -1,4 +1,4 @@
-#include "spinner.h"
+#include "Spinner.h"
 
 void PHHSSpinner::spinnerOn(float speed)
 {

@@ -23,7 +23,7 @@
 #include "ctre/Phoenix.h"
 
 //Spinner
-#include "spinner.h"
+#include "Spinner.h"
 
 class Robot : public frc::TimedRobot {
 private:

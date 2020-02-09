@@ -9,9 +9,10 @@
 #include "rev/ColorSensorV3.h"
 #include <frc/smartdashboard/smartdashboard.h>
 #include "ColorWheel.h"
+#include "Spinner.h"
 
 rev::ColorSensorV3 m_colorSensor{ frc::I2C::Port::kOnboard};
-#include "spinner.cpp"
+
 
 void Robot::RobotInit() {}
 
