@@ -6,14 +6,12 @@
 /*----------------------------------------------------------------------------*/
 
 #include "Robot.h"
-<<<<<<< HEAD
 #include "rev/ColorSensorV3.h"
 #include <frc/smartdashboard/smartdashboard.h>
+#include "ColorWheel.h"
 
 rev::ColorSensorV3 m_colorSensor{ frc::I2C::Port::kOnboard};
-=======
-#include "spinner.h"
->>>>>>> origin/spinner
+#include "spinner.cpp"
 
 void Robot::RobotInit() {}
 
@@ -22,44 +20,6 @@ void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {}
 void Robot::TeleopPeriodic() {
-<<<<<<< HEAD
-    frc::Color detectedColor = m_colorSensor.GetColor();
-
-    /**
-     * The sensor returns a raw IR value of the infrared light detected.
-     */
-    double IR = m_colorSensor.GetIR();
-
-    /**
-     * Open Smart Dashboard or Shuffleboard to see the color detected by the 
-     * sensor.
-     */
-    frc::SmartDashboard::PutNumber("Red", detectedColor.red);
-    frc::SmartDashboard::PutNumber("Green", detectedColor.green);
-    frc::SmartDashboard::PutNumber("Blue", detectedColor.blue);
-    frc::SmartDashboard::PutNumber("IR", IR);
-    if(detectColor.red>detectColor.green  && detectColor.red>detectColor.blue){
-         spinner.spinnerOn(PHHSSpinner::kSpinnerHoriz);
-    }
-    else {
-          spinner.spinnerOff(PHHSSpinner::kSpinnerHorizOff);
-    }
-    /**
-     * In addition to RGB IR values, the color sensor can also return an 
-     * infrared proximity value. The chip contains an IR led which will emit
-     * IR pulses and measure the intensity of the return. When an object is 
-     * close the value of the proximity will be large (max 2047 with default
-     * settings) and will approach zero when the object is far away.
-     * 
-     * Proximity can be used to roughly approximate the distance of an object
-     * or provide a threshold for when an object is close enough to provide
-     * accurate color values.
-     */
-    uint32_t proximity = m_colorSensor.GetProximity();
-
-    frc::SmartDashboard::PutNumber("Proximity", proximity);
-=======
-    
         if(m_stick.GetRawButton(PHHSSpinner::kSpinnerMotorOnBtn))
         {
             spinner.spinnerOn(PHHSSpinner::kSpinnerHoriz);
@@ -69,8 +29,9 @@ void Robot::TeleopPeriodic() {
         {
             spinner.spinnerOff(PHHSSpinner::kSpinnerHorizOff);
         }
+
+        turn2Red();
     
->>>>>>> origin/spinner
 }
 
 void Robot::TestInit() {}
