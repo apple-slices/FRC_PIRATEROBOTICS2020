@@ -10,7 +10,7 @@
 
 void Robot::RobotInit() {
 
-    void spinnerInit();
+    spinner.SpinnerInit();
 
 }
 
