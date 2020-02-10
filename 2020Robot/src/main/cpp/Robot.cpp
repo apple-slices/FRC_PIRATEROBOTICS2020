@@ -6,16 +6,12 @@
 /*----------------------------------------------------------------------------*/
 
 #include "Robot.h"
-#include "driveControl.h"
 #include "DriveBase.h"
 #include "intake.h"
 
 void Robot::RobotInit() {
     
    intake.robotMotorInit(); 
-
-   intake.motorInit();
-} 
 
 void Robot::AutonomousInit() {}
 void Robot::AutonomousPeriodic() {}
