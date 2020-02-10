@@ -5,8 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#pragma once
-#ifndef SHOOTER 
+#pragma once 
 
 //WPILib includes
 #include <frc/TimedRobot.h>
@@ -22,15 +21,17 @@
 
 //CTRE includes
 #include "ctre/Phoenix.h"
-#include "shooter.h"
+
+//PHHS includes
+#include "intake.h"
+#include "driveControl.h"
 
 class Robot : public frc::TimedRobot {
-private:
-
-PHHSShooter shooter;
-
- frc::Joystick  m_stick{0};
-
+ private:
+  PHHSIntake    intake;
+  PHHSDrive     driveBase;
+  PHHSClimb   climb;
+  frc::Joystick m_stick{0}; 
  public:
   void RobotInit() override;
 
@@ -44,4 +45,4 @@ PHHSShooter shooter;
   void TestPeriodic() override;
 };
 
-#endif
+

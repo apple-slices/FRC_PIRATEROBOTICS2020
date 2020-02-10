@@ -5,30 +5,42 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-//Adrian Lam
-
-
 #include "Robot.h"
-#include "Shooter.h"
+#include "DriveBase.h"
+#include "intake.h"
 
-void Robot::RobotInit() {}
+void Robot::RobotInit() {
+    
+   intake.robotMotorInit(); 
 
 void Robot::AutonomousInit() {}
 void Robot::AutonomousPeriodic() {}
 
 void Robot::TeleopInit() {}
-void Robot::TeleopPeriodic() 
-{
-    if(m_stick.GetRawButton(PHHSShooter::kShooterMotorOnBtn))
+void Robot::TeleopPeriodic() {
+     
+    driveBase.arcadeDriveCalculate(m_stick.GetRawAxis(PHHSDrive::axisForUpDown), m_stick.GetRawAxis(PHHSDrive::axisForLeftRight));
+    
+    if(m_stick.GetRawButton(PHHSIntake::kDownwardMotorBtn))
     {
-        shooter.shooterOn(PHHSShooter::kShooterMotor);
+        intake.lowerIntake(PHHSIntake::kDownwardMotor);
     }
 
-
-    if(m_stick.GetRawButton(PHHSShooter::kShooterMotorOffBtn))
+    if(m_stick.GetRawButton(PHHSIntake::kUpwardMotorBtn))
     {
-        shooter.shooterOff(PHHSShooter::kShooterMotorOff);
+        intake.raiseIntake(PHHSIntake::kUpwardMotor);
     }
+
+    if(m_stick.GetRawButton(PHHSIntake::kIntakemotorBtn))
+    {
+        intake.suckSpeed(PHHSIntake::kIntakeMotor);
+    }
+
+    if(m_stick.GetRawButton(PHHSIntake::kIntakeMotorOffBtn))
+    {
+        intake.suckSpeedOff(PHHSIntake::kIntakeMotorOff);
+    }
+
 }
 
 void Robot::TestInit() {}
@@ -37,3 +49,6 @@ void Robot::TestPeriodic() {}
 #ifndef RUNNING_FRC_TESTS
 int main() { return frc::StartRobot<Robot>(); }
 #endif
+
+
+
