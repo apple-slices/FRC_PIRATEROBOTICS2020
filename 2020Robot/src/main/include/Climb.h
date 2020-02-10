@@ -1,24 +1,27 @@
 #pragma once 
-#ifndef CLIMB
 #ifdef CLIMB
 
 #include "Compressor.h"
 #include "Solenoid.h"
 
-class PHHSClimb 
+class PHHSClimb
 {
     private:
     //Solenoid 
 
-    
+    Compressor* pCompressor;
 
-
-
-
+    Solenoid* pSoldenoid;
 
 
     public:
 
+    Climb();
+    ~Climb();
+
+    void climbUp();
+
+    void climbDown();
 
 
 
