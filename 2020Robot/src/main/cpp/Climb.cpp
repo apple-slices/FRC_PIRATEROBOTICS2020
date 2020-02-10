@@ -2,8 +2,7 @@
 
 #include "Climb.h"
 
-
-void PHHSClimb::climbUp()
+void PHHSClimb:: 
 {
     
 }

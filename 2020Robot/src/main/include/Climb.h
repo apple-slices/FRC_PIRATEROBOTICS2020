@@ -1,5 +1,6 @@
 #pragma once 
-#ifdef CLIMB
+#ifndef CLIMB
+#define CLIMB
 
 #include "Compressor.h"
 #include "Solenoid.h"
@@ -7,21 +8,19 @@
 class PHHSClimb
 {
     private:
-    //Solenoid 
+    //Single Solenoid
+    constexpr static int kSolenoidUp = 1; 
+    constexpr static int kSolenoidDown = 2;
 
-    Compressor* pCompressor;
-
-    Solenoid* pSoldenoid;
 
 
     public:
+    //Button to raise and lower the climb 
+    constexpr static int kClimbUpBtn = 1;
+    constexpr static int kClimbDownBtn = 2;
 
-    Climb();
-    ~Climb();
 
-    void climbUp();
-
-    void climbDown();
+    
 
 
 
