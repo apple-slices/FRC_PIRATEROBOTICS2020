@@ -17,5 +17,7 @@
   "files.associations": {
     "*.tcc": "cpp",
     "*.inc": "cpp"
-  }
+  },
+  "C_Cpp.dimInactiveRegions": false,
+  "git.ignoreLimitWarning": true
 }

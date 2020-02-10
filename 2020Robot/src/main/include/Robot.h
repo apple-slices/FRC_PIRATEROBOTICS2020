@@ -30,6 +30,7 @@ class Robot : public frc::TimedRobot {
  private:
   PHHSIntake    intake;
   PHHSDrive     driveBase;
+  PHHSClimb   climb;
   frc::Joystick m_stick{0}; 
  public:
   void RobotInit() override;
