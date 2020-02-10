@@ -8,27 +8,37 @@
 
 #include "driveControl.h"
 #include "math.h"
-
+PHHSDrive::PHHSDrive() {
+   l2MotorFront->Follow(*l1MotorFront, false);
+   r2MotorFront->Follow(*r1MotorFront, false);
+}
 void PHHSDrive::arcadeDrive(float lStick, float rStick){ 
    endValueLeft = endValueRight =0;
    
-   if (abs(rStick) > m_error ){ // turning left or right
-      endValueRight = m_correction * ((lStick - rStick)-m_error); 
-      endValueLeft =  m_correction * ((lStick + rStick)-m_error);
+   if (abs(rStick) > m_error && abs(lStick) < m_error ){ // turning left or right in place
+      endValueRight = m_correction *(-rStick + m_error); 
+      endValueLeft =  m_correction *(rStick - m_error);
    }
   
-   else if (abs(lStick)> m_error  && abs(rStick)< m_error){ // forward or back
+   else if (abs(lStick)> m_error && abs(rStick)< m_error){ // forward or back
       endValueRight = m_correction * -1 * (lStick - m_error);
       endValueLeft  = m_correction * -1 * (lStick - m_error);
    }
 
+   else if ((abs(lStick) > m_error) && (abs(rStick) > m_error)){ //turns foward right
+      endValueRight = ((0.75) * lStick); // decrease speed
+      endValueLeft = ((0.75) * lStick) + (0.5 * rStick); // or increase speed
+   }
+
+   else if ((abs(lStick) > m_error) && (-rStick < -m_error)){ //turns foward left
+      endValueLeft = ((0.75) * lStick); // decreases speed
+      endValueRight = ((0.75) * lStick) + (-0.5 * rStick); // or increase speed
+   }
 
 
-   l1MotorFront->Set(endValueLeft);  
-   l2MotorFront->Set(endValueLeft);
+
+   l1MotorFront->Set(endValueLeft);
    r1MotorFront->Set(endValueRight);
-   r2MotorFront->Set(endValueRight);
-
 }
 
 void PHHSDrive::pieceWiseDrive(float lStick, float rStick){
