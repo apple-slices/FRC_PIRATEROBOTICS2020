@@ -25,13 +25,16 @@
 //PHHS includes
 #include "intake.h"
 #include "driveControl.h"
+#include "Climb.h"
+#include "Solenoid.h"
 
 class Robot : public frc::TimedRobot {
  private:
   PHHSIntake    intake;
   PHHSDrive     driveBase;
-  PHHSClimb   climb;
+  PHHSClimb     climb;
   frc::Joystick m_stick{0}; 
+  frc::Solenoid m_solenoid{0};
  public:
   void RobotInit() override;
 

@@ -8,6 +8,7 @@
 #include "Robot.h"
 #include "DriveBase.h"
 #include "intake.h"
+#include "Climb.h"
 
 void Robot::RobotInit() {
     
@@ -39,6 +40,11 @@ void Robot::TeleopPeriodic() {
     if(m_stick.GetRawButton(PHHSIntake::kIntakeMotorOffBtn))
     {
         intake.suckSpeedOff(PHHSIntake::kIntakeMotorOff);
+    }
+
+    if(m_stick.GetRawButton(PHHSClimb::kClimbUpBtn))
+    {
+        m_solenoid.Set(frc::Solenoid::kUp);
     }
 
 }
