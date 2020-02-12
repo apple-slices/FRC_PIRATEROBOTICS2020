@@ -42,9 +42,14 @@ void Robot::TeleopPeriodic() {
         intake.suckSpeedOff(PHHSIntake::kIntakeMotorOff);
     }
 
-    if(m_stick.GetRawButton(PHHSClimb::kClimbUpBtn))
+    if(m_solenoid.GetRawButton(PHHSClimb::kClimupBtn))
     {
-        m_solenoid.Set(frc::Solenoid::kUp);
+        climb.ClimbUp(PHHSClimb::kUp);
+    }
+
+    if(m_solenoid.GetRawButton(PHHSClimb::kClimbDownBtn))
+    {
+        climb.ClimbDown(PHHSClimb::kDown);
     }
 
 }
