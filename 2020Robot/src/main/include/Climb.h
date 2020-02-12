@@ -5,6 +5,7 @@
 #include "Solenoid.h"
 
 
+
 class PHHSClimb
 {
     private:
@@ -19,8 +20,8 @@ class PHHSClimb
     constexpr static int kClimbUpBtn = 2;
     constexpr static int kClimbDownBtn = 3;
 
-    bool kUp = true;
-    bool kDown = false;
+    bool  kUp = true;
+    bool  kDown = false;
 
     void ClimbUp(bool);
 

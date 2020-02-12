@@ -14,6 +14,8 @@ void Robot::RobotInit() {
     
    intake.robotMotorInit(); 
 
+}
+
 void Robot::AutonomousInit() {}
 void Robot::AutonomousPeriodic() {}
 
