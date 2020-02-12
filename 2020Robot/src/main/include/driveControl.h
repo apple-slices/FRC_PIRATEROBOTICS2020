@@ -16,6 +16,8 @@ class PHHSDrive{
     const float m_error = 0.1;
     double m_correction = ((1.0)/(1.0-m_error));
 
+    double adrianCoefficent = 0.15;
+
 
     float endValueLeft = 0;
     float endValueRight = 0;

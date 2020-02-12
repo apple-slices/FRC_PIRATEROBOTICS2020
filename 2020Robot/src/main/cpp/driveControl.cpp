@@ -25,18 +25,18 @@ void PHHSDrive::arcadeDrive(float lStick, float rStick){
       endValueLeft  = m_correction * -1 * (lStick - m_error);
    }
 
-   else if ((abs(lStick) > m_error) && (abs(rStick) > m_error)){ //turns foward right
+   else if ((abs(lStick) > m_error) && (rStick > m_error)){ //turns foward right
       endValueRight = ((0.75) * lStick); // decrease speed
-      endValueLeft = ((0.75) * lStick) + (0.5 * rStick); // or increase speed
+      endValueLeft = ((0.75) * lStick) + (adrianCoefficent * rStick); // or increase speed
    }
 
    else if ((abs(lStick) > m_error) && (-rStick < -m_error)){ //turns foward left
       endValueLeft = ((0.75) * lStick); // decreases speed
-      endValueRight = ((0.75) * lStick) + (-0.5 * rStick); // or increase speed
+      endValueRight = ((0.75) * lStick) + (-1 * adrianCoefficent * rStick); // or increase speed
    }
 
-
-
+//Make sure to change "adrianCoefficient" into an actual name 
+ 
    l1MotorFront->Set(endValueLeft);
    r1MotorFront->Set(endValueRight);
 }
