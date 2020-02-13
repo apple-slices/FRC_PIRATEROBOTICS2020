@@ -14,7 +14,7 @@ void PHHSDrive::arcadeDrive(float lStick, float rStick){
    
    if (abs(rStick) > m_error ){ // turning left or right
       endValueRight = m_correction * ((lStick - rStick)-m_error); 
-      endValueLeft =  m_correction * ((lStick + rStick)-m_error);
+      endValueLeft =  m_correction * ((lStick - rStick)-m_error);
    }
   
    else if (abs(lStick)> m_error){ // forward or back
