@@ -24,13 +24,15 @@
 
 //PHHS includes
 #include "driveControl.h"
-
+#include "PIDDriver.h"
 
 class Robot : public frc::TimedRobot {
- private:
+private:
   PHHSDrive driveBase;
   frc::Joystick m_stick{0};
- public:
+  PIDDriver pid;
+
+public:
   void RobotInit() override;
 
   void AutonomousInit() override;
