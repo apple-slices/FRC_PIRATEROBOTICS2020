@@ -1,11 +1,8 @@
 // Jason Cheng / Jason Nguyen
 
-#include <frc/SmartDashboard/SmartDashboard.h>
-#include "rev/CANSparkMax.h"
-#include "rev/CANEncoder.h"
-#include "rev/CANPIDController.h"
+#include "PIDDrive.h"
 
-int PIDDrive(double distance, rev::CANEncoder &wheelEncoder, rev::CANSparkMax &wheelController, bool testing = false) {
+    int PIDDrive::drive(double distance, rev::CANEncoder &encoder1, rev::CANEncoder &encoder2, rev::CANSparkMax &wheel1, rev::CANSparkMax &wheel2, bool testing) {
     // constants
     static double kp = 0.0;
     static double ki = 0.0;
@@ -17,12 +14,14 @@ int PIDDrive(double distance, rev::CANEncoder &wheelEncoder, rev::CANSparkMax &w
     static double setPt = 0.0;
 
     // static objects to be reused
-    static rev::CANPIDController PIDController = rev::CANPIDController(wheelController);
+    static rev::CANPIDController pid1 = rev::CANPIDController(wheel1);
+    static rev::CANPIDController pid2 = rev::CANPIDController(wheel2);
 
     // init stuff
     static bool init = true;
     if (init) {
-        wheelController.RestoreFactoryDefaults();
+        wheel1.RestoreFactoryDefaults();
+        wheel2.RestoreFactoryDefaults();
         init = false;
         if (testing) {
             frc::SmartDashboard::PutNumber("P Gain", kp);
@@ -49,13 +48,21 @@ int PIDDrive(double distance, rev::CANEncoder &wheelEncoder, rev::CANSparkMax &w
     }
 
     // update parameters
-    PIDController.SetP(kp);
-    PIDController.SetI(ki);
-    PIDController.SetD(kd);
-    PIDController.SetIZone(iz);
-    PIDController.SetFF(ff);
-    PIDController.SetOutputRange(min, max);
-    PIDController.SetReference(setPt, rev::ControlType::kPosition);
+    pid1.SetP(kp);
+    pid1.SetI(ki);
+    pid1.SetD(kd);
+    pid1.SetIZone(iz);
+    pid1.SetFF(ff);
+    pid1.SetOutputRange(min, max);
+    pid1.SetReference(setPt, rev::ControlType::kPosition);
+
+    pid2.SetP(kp);
+    pid2.SetI(ki);
+    pid2.SetD(kd);
+    pid2.SetIZone(iz);
+    pid2.SetFF(ff);
+    pid2.SetOutputRange(min, max);
+    pid2.SetReference(setPt, rev::ControlType::kPosition);
 
     frc::SmartDashboard::PutNumber("SetPoint", setPt);
 }

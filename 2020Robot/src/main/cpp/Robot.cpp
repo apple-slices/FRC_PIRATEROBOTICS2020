@@ -8,11 +8,17 @@
 #include "Robot.h"
 #include "driveControl.h"
 #include "DriveBase.h"
+#include "PIDDrive.h"
+
+PIDDrive pid;
 
 void Robot::RobotInit() {}
 
-void Robot::AutonomousInit() {}
-void Robot::AutonomousPeriodic() {}
+void Robot::AutonomousInit() {
+}
+void Robot::AutonomousPeriodic() {
+    pid.drive(5.0, pid.encoder1, pid.encoder2, pid.lMotorFront, pid.rMotorFront, true);
+}
 
 void Robot::TeleopInit() {}
 void Robot::TeleopPeriodic() {
