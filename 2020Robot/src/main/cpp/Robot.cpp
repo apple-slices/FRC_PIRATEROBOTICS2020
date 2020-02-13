@@ -44,7 +44,7 @@ void Robot::TeleopPeriodic() {
         intake.suckSpeedOff(PHHSIntake::kIntakeMotorOff);
     }
 
-    if(m_solenoid.GetRawButton(PHHSClimb::kClimupBtn))
+    if(m_solenoid.GetRawButton(PHHSClimb::kClimbUpBtn))
     {
         climb.ClimbUp(PHHSClimb::kUp);
     }
@@ -52,6 +52,16 @@ void Robot::TeleopPeriodic() {
     if(m_solenoid.GetRawButton(PHHSClimb::kClimbDownBtn))
     {
         climb.ClimbDown(PHHSClimb::kDown);
+    }
+
+    if(m_compressor.GetRawButton(PHHSClimb::kCompressorOnBtn))
+    {
+        climb.CompressorOn(PHHSClimb::kOn);
+    }
+
+    if(m_compressor.GetRawButton(PHHSClimb::kCompressorOffBtn))
+    {
+        climb.CompressorOff(PHHSClimb::kOff);
     }
 
 }
