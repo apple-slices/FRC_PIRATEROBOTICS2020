@@ -26,7 +26,7 @@
 #include "intake.h"
 #include "driveControl.h"
 #include "Climb.h"
-#include "Solenoid.h"
+#include "frc/Solenoid.h"
 
 class Robot : public frc::TimedRobot {
  private:
