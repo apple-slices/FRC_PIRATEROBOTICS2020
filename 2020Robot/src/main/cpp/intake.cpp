@@ -26,13 +26,6 @@ void PHHSIntake::raiseIntake(float motorSpeed)
     m_indexingMotor.Set(motorSpeed);
 }
 
-void PHHSIntake::robotMotorInit()
-{
-    //Change kTimeoutMs if needed to because the docum. says 50
-    m_indexingMotor.ConfigFactoryDefault(kTimeoutMs);
-    m_intakeMotor.ConfigFactoryDefault(kTimeoutMs);
-}
-
 
 void PHHSIntake::motorInit()
 {

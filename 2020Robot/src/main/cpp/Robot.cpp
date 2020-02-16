@@ -12,9 +12,8 @@
 
 void Robot::RobotInit() {
     
-   intake.robotMotorInit(); 
-
    intake.motorInit();
+   
 } 
 
 void Robot::AutonomousInit() {}
