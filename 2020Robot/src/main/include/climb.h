@@ -2,7 +2,7 @@
 #ifndef CLIMB
 #define CLIMB
 
-#include <Solenoid.h>
+#include <frc/Solenoid.h>
 
 
 
@@ -11,7 +11,7 @@ class PHHSClimb
     private:
     //Single Solenoid
     constexpr static int kSolenoid = 1; 
-    
+
     
     
     public:
@@ -20,21 +20,12 @@ class PHHSClimb
     constexpr static int kClimbUpBtn = 2;
     constexpr static int kClimbDownBtn = 3;
 
-    //Buttons to turn on and off the compressor
-    constexpr static int kCompressorOnBtn = 5; 
-    constexpr static int kCompressorOffBtn = 6;
+    bool  kUp = true;
+    bool  kDown = false;
 
-    bool kUp = true;
-    bool kDown = false;
+    void ClimbUp(bool);
 
-    bool kOn = true;
-    bool kOff = false;
-
-    void ClimbUp(bool On);
-    void ClimbDown(bool Off);
-
-    void CompressorOn(bool);
-    void CompressorOff(bool);
+    void ClimbDown(bool);
 
 
 
