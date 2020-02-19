@@ -10,8 +10,8 @@ class PHHSIntake
 
 private:
 //motor IDs
-const int kIntakemotorID = 1;
-const int kIndexingMotorID = 0;
+const int kIntakemotorID = 0;
+const int kIndexingMotorID = 2;
 
 //Motor Control limits 
 const int kPeakCurrentAmpIntake = 40; //Max. before tirggering current limit 
@@ -31,10 +31,10 @@ WPI_TalonSRX m_indexingMotor{kIndexingMotorID};
 
 public:
 //motor speed 
-constexpr static float kDownwardMotor = 1.0;
-constexpr static float kUpwardMotor = -1.0;
+constexpr static float kDownwardMotor = 0.0;
+constexpr static float kUpwardMotor = 0.9;
 constexpr static float kIntakeMotor = 1.0; 
-constexpr static float kIntakeMotorOff = 0.0;
+constexpr static float kIntakeMotorOff = -1.0;
 //Joystick ID 
 constexpr static int kDownwardMotorBtn = 1; //button A on Xbox 360 
 constexpr static int kUpwardMotorBtn = 2; //button B on Xbox 360 
