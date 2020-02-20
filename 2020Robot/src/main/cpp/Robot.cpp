@@ -10,7 +10,7 @@
 
 #include "Robot.h"
 #include "Shooter.h"
-#include <chrono>
+
 
 void Robot::RobotInit() {}
 
@@ -20,12 +20,15 @@ void Robot::AutonomousPeriodic() {}
 void Robot::TeleopInit() {}
 void Robot::TeleopPeriodic() 
 {
-   auto start = std::chrono::high_resolution_clock::now();
+   
 
     if(m_stick.GetRawButton(PHHSShooter::kShooterMotorOnBtn))
     {
-        shooter.shooterOn(PHHSShooter::kShooterMotor);
+        shooter.shooterOn(PHHSShooter::kShooterMotor1);
+        
+        shooter.shooterOn(PHHSShooter::kShooterMotor2);
     }
+    
 
 
     if(m_stick.GetRawButton(PHHSShooter::kShooterMotorOffBtn))
@@ -33,7 +36,7 @@ void Robot::TeleopPeriodic()
         shooter.shooterOff(PHHSShooter::kShooterMotorOff);
     }
 
-    auto finish = std::chrono::high_resolution_clock_::now();
+    
 
     
 }
