@@ -25,16 +25,16 @@ void Robot::TeleopPeriodic()
     if(m_stick.GetRawButton(PHHSShooter::kShooterMotorOnBtn))
     {
         shooter.shooterOn(PHHSShooter::kShooterMotor1);
-        
+
         shooter.shooterOn(PHHSShooter::kShooterMotor2);
     }
     
-
-
+    
     if(m_stick.GetRawButton(PHHSShooter::kShooterMotorOffBtn))
     {
         shooter.shooterOff(PHHSShooter::kShooterMotorOff);
     }
+   
 
     
 
