@@ -19,14 +19,30 @@ void Robot::RobotInit() {
 void Robot::AutonomousInit() {}
 void Robot::AutonomousPeriodic() {}
 
-void Robot::TeleopInit() {}
+void Robot::TeleopInit() {
+    
+}
 void Robot::TeleopPeriodic() {
      
     driveBase.arcadeDriveCalculate(m_stick.GetRawAxis(PHHSDrive::axisForUpDown), m_stick.GetRawAxis(PHHSDrive::axisForLeftRight));
     
     if(m_stick.GetRawButton(PHHSIntake::kDownwardMotorBtn))
     {
+        auto start = high_resolution_clock::now();
+
         intake.lowerIntake(PHHSIntake::kDownwardMotor);
+
+        auto duration = duration_cast<microseconds>(stop - start);
+
+    }
+    if(intake.upTime>now())
+    {
+        intake.lowerIntake();
+        else
+        {
+            intake.off();
+        }
+        
     }
 
     if(m_stick.GetRawButton(PHHSIntake::kUpwardMotorBtn))

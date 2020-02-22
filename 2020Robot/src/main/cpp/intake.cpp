@@ -26,7 +26,20 @@ void PHHSIntake::raiseIntake(float motorSpeed)
     m_intakeheight.Set(motorSpeed);
 }
 
+void PHHSIntake::upTime(int time)
+{
+    
+}
 
+void PHHSIntake::downTime(int time)
+{
+
+}
+
+void PHHSIntake::IntakeOff(float motorSpeed)
+{
+    m_intakeheight.Set(0.0);
+}
 void PHHSIntake::motorInit()
 {
     
@@ -40,6 +53,9 @@ void PHHSIntake::motorInit()
     //code for amp limit 
     m_intakeMotor.ConfigPeakCurrentLimit(kPeakCurrentAmpIntake, kPeakTimeMs);
     m_intakeheight.ConfigPeakCurrentLimit(kPeakCurrentAmpIndexing, kPeakTimeMs);
+
+    m_intakeMotor.ConfigPeakCurrentDuration(kPeakTimeMs,kTimeoutMs);
+    m_intakeheight.ConfigPeakCurrentDuration(kPeakTimeMs,kTimeoutMs);
 
     m_intakeheight.EnableCurrentLimit(true);
     m_intakeMotor.EnableCurrentLimit(true);
