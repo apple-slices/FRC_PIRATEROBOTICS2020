@@ -27,7 +27,7 @@ const int kPeakTimeMs = 0; //How long after peak current to stop motors
 
 //const float kIntakeDown = 1.0;
 
-WPI_VictorSPX m_intakeheight{kIntakeHID};
+WPI_TalonSRX m_intakeheight{kIntakeHID};
 WPI_VictorSPX m_intakeMotor{kIntakeMotorID};
 
 public:
