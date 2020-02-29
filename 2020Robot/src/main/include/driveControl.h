@@ -16,12 +16,6 @@ class PHHSDrive{
     const float m_error = 0.15;
     double m_correction = ((1.0)/(1.0-m_error));
 
-    double adrianCoefficent = 0.15;
-
-    float tightness = 0.50;
-
-    
-
     float endValueLeft = 0;
     float endValueRight = 0;
 
@@ -32,8 +26,8 @@ class PHHSDrive{
     rev::CANSparkMax* r2MotorFront = new rev::CANSparkMax(m_2rMotorFrontNum, rev::CANSparkMax::MotorType::kBrushless);
     
     //Ramp Piecewise
-    float p1_correction = m_error * (0.25);
-    float p2_correction = m_error * (2);
+    float p1_correction = m_error * (0.75);
+    float p2_correction = m_error * (4);
 
     //Ramp Exponetial 
 

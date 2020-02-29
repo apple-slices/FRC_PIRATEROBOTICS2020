@@ -54,63 +54,78 @@ void PHHSDrive::arcadeDrive(float laStick, float rStick){
       endValueRight = endValueLeft * (1 - rStick); 
    }
 
-
-//Make sure to change "adrianCoefficient" into an actual name 
- 
    l1MotorFront->Set(-endValueLeft);
    r1MotorFront->Set(endValueRight);
 }
 
-void PHHSDrive::pieceWiseDrive(float lStick, float rStick){
-   endValueLeft = endValueRight =0;
-
-   if (abs(rStick) < 0.4){
-      if (abs(rStick) > m_error ){ // turning left or right
-         endValueRight =  ((lStick - rStick)-m_error); 
-         endValueLeft =   ((lStick + rStick)-m_error);
-      }
-      else if (abs(lStick)> m_error){ // forward or back
-         endValueRight = (lStick - m_error);
-         endValueLeft  = (lStick - m_error);
-      }
-   }
-
-   else if (abs(rStick) > 0.4){
-      if (abs(rStick) > m_error ){ // turning left or right
-         endValueRight = m_correction * ((lStick - rStick)-m_error); 
-         endValueLeft =  m_correction * ((lStick + rStick)-m_error);
-      }
-      else if (abs(lStick)> m_error){ // forward or back
-         endValueRight = m_correction * (lStick - m_error);
-         endValueLeft  = m_correction * (lStick - m_error);
-      }
-   }
 
 
-   l1MotorFront->Set(endValueLeft);  
-   l2MotorFront->Set(endValueLeft);
-   r1MotorFront->Set(endValueRight);
-   r2MotorFront->Set(endValueRight);
-}
 
 
-void PHHSDrive::exponentDrive(float lStick, float rStick){ 
-   endValueLeft = endValueRight =0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void PHHSDrive::exponentDrive(float laStick, float rStick){
    
-   if (abs(rStick) > m_error ){ // turning left or right
-      endValueRight = m_exponential * ((lStick - rStick)-m_error); 
-      endValueLeft =  m_exponential * ((lStick + rStick)-m_error);
+   float lStick = -laStick;
+   float endValueLeft = endValueRight = 0;
+   
+   
+   if (abs(rStick) > m_error && abs(lStick) < m_error ){ // turning left or right in place
+      endValueLeft = (m_correction *(-rStick + m_error)) * (m_correction *(-rStick + m_error)); 
+      endValueRight =  (m_correction *(rStick - m_error)) * (m_correction *(rStick - m_error));
    }
   
-   else if (abs(lStick)> m_error){ // forward or back
-      endValueRight = m_exponential * (lStick - m_error);
-      endValueLeft  = m_exponential * (lStick - m_error);
+   else if (lStick > m_error && abs(rStick)< m_error){ // forward or back
+      endValueRight = -1 * (m_correction  * (lStick - m_error)) *  (m_correction  * (lStick - m_error));
+      endValueLeft  = -1 * (m_correction * (lStick - m_error)) *  (m_correction  * (lStick - m_error));
    }
 
-   l1MotorFront->Set(endValueLeft);  
-   l2MotorFront->Set(endValueLeft);
+   else if (lStick < -m_error && abs(rStick)< m_error){ // forward or back
+      endValueRight =  (m_correction  * (lStick + m_error)) * (m_correction  * (lStick + m_error));
+      endValueLeft  =  (m_correction * (lStick + m_error)) * (m_correction * (lStick + m_error));
+   }
+
+   else if ((lStick > m_error) && (rStick < m_error)){ //turns foward left
+      endValueRight  = m_correction * -1 * (lStick - m_error);
+      endValueLeft = endValueRight * (1 + rStick); 
+   }
+
+   else if ((lStick > m_error) && (rStick > m_error)){ //turns foward right
+      endValueLeft  = m_correction * -1 * (lStick - m_error);
+      endValueRight = endValueLeft * (1 - rStick); 
+   }
+
+   else if ((lStick < -m_error) && (rStick < m_error)){ //turns back left
+      endValueRight  = -m_correction * (lStick + m_error);
+      endValueLeft = endValueRight * (1 + rStick); 
+
+   }
+
+   else if ((lStick < -m_error) && (rStick > m_error)){ //turns back right
+      endValueLeft  = m_correction * -1 * (lStick + m_error);
+      endValueRight = endValueLeft * (1 - rStick); 
+   }
+   
+   l1MotorFront->Set(-endValueLeft);
    r1MotorFront->Set(endValueRight);
-   r2MotorFront->Set(endValueRight);
 }
 
 
@@ -119,4 +134,78 @@ void PHHSDrive::exponentDrive(float lStick, float rStick){
 
 
 
+
+
+
+
+
+
+
+
+
+
+void PHHSDrive::pieceWiseDrive(float laStick, float rStick){ 
+   
+   float lStick = -laStick;
+   float endValueLeft = endValueRight = 0;
+   
+   
+   if (abs(rStick) > m_error && abs(lStick) < m_error){ // turning left or right in place
+      if(abs(rStick) < 0.25){
+         endValueLeft = p1_correction *(-rStick + m_error); 
+         endValueRight =  p1_correction *(rStick - m_error);
+      }
+      else if(abs(rStick) > 0.25){
+         endValueLeft = p2_correction *(-rStick + m_error); 
+         endValueRight =  p2_correction *(rStick - m_error);
+      }
+   }
+  
+   else if (lStick > m_error && abs(rStick)< m_error){ // forward or back
+      if(abs(lStick) < 0.25){
+         endValueRight = p1_correction * -1 * (lStick - m_error);
+         endValueLeft  = p1_correction * -1 * (lStick - m_error);
+      }
+      else if(abs(lStick) > 0.25){
+         endValueRight = p2_correction * -1 * (lStick - m_error);
+         endValueLeft  = p2_correction * -1 * (lStick - m_error);
+      }     
+      
+   }
+
+   else if (lStick < -m_error && abs(rStick)< m_error){ // forward or back
+      if(abs(lStick) < 0.25){
+         endValueRight = p1_correction * -1 * (lStick + m_error);
+         endValueLeft  = p1_correction * -1 * (lStick + m_error);
+      }
+      else if(abs(lStick) > 0.25){
+         endValueRight = p2_correction * -1 * (lStick + m_error);
+         endValueLeft  = p2_correction * -1 * (lStick + m_error);
+      }   
+   }
+
+   else if ((lStick > m_error) && (rStick < m_error)){ //turns foward left
+      endValueRight  = m_correction * -1 * (lStick - m_error);
+      endValueLeft = endValueRight * (1 + rStick); 
+   }
+
+   else if ((lStick > m_error) && (rStick > m_error)){ //turns foward right
+      endValueLeft  = m_correction * -1 * (lStick - m_error);
+      endValueRight = endValueLeft * (1 - rStick); 
+   }
+
+   else if ((lStick < -m_error) && (rStick < m_error)){ //turns back left
+      endValueRight  = -m_correction * (lStick + m_error);
+      endValueLeft = endValueRight * (1 + rStick); 
+
+   }
+
+   else if ((lStick < -m_error) && (rStick > m_error)){ //turns back right
+      endValueLeft  = m_correction * -1 * (lStick + m_error);
+      endValueRight = endValueLeft * (1 - rStick); 
+   }
+
+   l1MotorFront->Set(-endValueLeft);
+   r1MotorFront->Set(endValueRight);
+}
 
