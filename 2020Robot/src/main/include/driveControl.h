@@ -13,7 +13,7 @@ class PHHSDrive{
     const int m_1rMotorFrontNum = 3; //3 and 1 for pathfinder; 
     const int m_2rMotorFrontNum = 1; //1
     const double m_neutral = 0; 
-    const float m_error = 0.1;
+    const float m_error = 0.15;
     double m_correction = ((1.0)/(1.0-m_error));
 
     double adrianCoefficent = 0.15;
