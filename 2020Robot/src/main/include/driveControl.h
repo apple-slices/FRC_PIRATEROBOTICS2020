@@ -7,11 +7,11 @@ class PHHSDrive{
 
     private:
     //General
-    const int m_1lMotorFrontNum = 13; //3 and 1 for pathfinder; 
-    const int m_2lMotorFrontNum = 14;
+    const int m_1lMotorFrontNum = 12; //3 and 1 for pathfinder; 
+    const int m_2lMotorFrontNum = 13; //13
 
-    const int m_1rMotorFrontNum = 15; //3 and 1 for pathfinder; 
-    const int m_2rMotorFrontNum = 12;
+    const int m_1rMotorFrontNum = 3; //3 and 1 for pathfinder; 
+    const int m_2rMotorFrontNum = 1; //1
     const double m_neutral = 0; 
     const float m_error = 0.1;
     double m_correction = ((1.0)/(1.0-m_error));
@@ -36,8 +36,8 @@ class PHHSDrive{
     float m_exponential = m_correction * m_correction; 
 
     public:
-    const static int axisForUpDown = 4; //1 is for joystick left
-    const static int axisForLeftRight = 1; //2 is for joystick right
+    const static int axisForUpDown = 1; //1 is for joystick left
+    const static int axisForLeftRight = 2; //2 is for joystick right
 
     PHHSDrive();
     void arcadeDrive(float lStick, float rStick);

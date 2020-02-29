@@ -12,12 +12,13 @@ PHHSDrive::PHHSDrive() {
    l2MotorFront->Follow(*l1MotorFront, false);
    r2MotorFront->Follow(*r1MotorFront, false);
 }
-void PHHSDrive::arcadeDrive(float lStick, float rStick){ 
+void PHHSDrive::arcadeDrive(float laStick, float rStick){ 
    endValueLeft = endValueRight =0;
+   float lStick = -laStick;
    
    if (abs(rStick) > m_error && abs(lStick) < m_error ){ // turning left or right in place
-      endValueRight = m_correction *(-rStick + m_error); 
-      endValueLeft =  m_correction *(rStick - m_error);
+      endValueLeft = m_correction *(-rStick + m_error); 
+      endValueRight =  m_correction *(rStick - m_error);
    }
   
    else if (abs(lStick)> m_error && abs(rStick)< m_error){ // forward or back
@@ -26,8 +27,8 @@ void PHHSDrive::arcadeDrive(float lStick, float rStick){
    }
 
    else if ((abs(lStick) > m_error) && (rStick > m_error)){ //turns foward right
-      endValueRight = ((0.75) * lStick); // decrease speed
-      endValueLeft = ((0.75) * lStick) + (adrianCoefficent * rStick); // or increase speed
+      endValueRight = ((-0.75) * lStick); // decrease speed
+      endValueLeft = ((-0.75) * lStick) + (adrianCoefficent * -rStick); // or increase speed
    }
 
    else if ((abs(lStick) > m_error) && (-rStick < -m_error)){ //turns foward left
@@ -37,7 +38,7 @@ void PHHSDrive::arcadeDrive(float lStick, float rStick){
 
 //Make sure to change "adrianCoefficient" into an actual name 
  
-   l1MotorFront->Set(endValueLeft);
+   l1MotorFront->Set(-endValueLeft);
    r1MotorFront->Set(endValueRight);
 }
 
