@@ -23,9 +23,14 @@ void PHHSDrive::arcadeDrive(float laStick, float rStick){
       endValueRight =  m_correction *(rStick - m_error);
    }
   
-   else if (abs(lStick)> m_error && abs(rStick)< m_error){ // forward or back
+   else if (lStick > m_error && abs(rStick)< m_error){ // forward or back
       endValueRight = m_correction * -1 * (lStick - m_error);
       endValueLeft  = m_correction * -1 * (lStick - m_error);
+   }
+
+   else if (lStick < -m_error && abs(rStick)< m_error){ // forward or back
+      endValueRight = m_correction * -1 * (lStick + m_error);
+      endValueLeft  = m_correction * -1 * (lStick + m_error);
    }
 
    else if ((lStick > m_error) && (rStick < m_error)){ //turns foward left
@@ -33,11 +38,21 @@ void PHHSDrive::arcadeDrive(float laStick, float rStick){
       endValueLeft = endValueRight * (1 + rStick); 
    }
 
-   else if ((abs(lStick) > m_error) && (rStick > m_error)){ //turns foward right
+   else if ((lStick > m_error) && (rStick > m_error)){ //turns foward right
       endValueLeft  = m_correction * -1 * (lStick - m_error);
       endValueRight = endValueLeft * (1 - rStick); 
    }
 
+   else if ((lStick < -m_error) && (rStick < m_error)){ //turns back left
+      endValueRight  = -m_correction * (lStick + m_error);
+      endValueLeft = endValueRight * (1 + rStick); 
+
+   }
+
+   else if ((lStick < -m_error) && (rStick > m_error)){ //turns back right
+      endValueLeft  = m_correction * -1 * (lStick + m_error);
+      endValueRight = endValueLeft * (1 - rStick); 
+   }
 
 
 //Make sure to change "adrianCoefficient" into an actual name 
