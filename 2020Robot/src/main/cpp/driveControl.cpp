@@ -15,6 +15,8 @@ PHHSDrive::PHHSDrive() {
 void PHHSDrive::arcadeDrive(float laStick, float rStick){ 
    
    float lStick = -laStick;
+   float endValueLeft = endValueRight = 0;
+   
    
    if (abs(rStick) > m_error && abs(lStick) < m_error ){ // turning left or right in place
       endValueLeft = m_correction *(-rStick + m_error); 
@@ -26,19 +28,17 @@ void PHHSDrive::arcadeDrive(float laStick, float rStick){
       endValueLeft  = m_correction * -1 * (lStick - m_error);
    }
 
+   else if ((lStick > m_error) && (rStick < m_error)){ //turns foward left
+      endValueRight  = m_correction * -1 * (lStick - m_error);
+      endValueLeft = endValueRight * (1 + rStick); 
+   }
+
    else if ((abs(lStick) > m_error) && (rStick > m_error)){ //turns foward right
-      endValueRight = m_correction * -1 * (lStick - m_error) - (rStick);
       endValueLeft  = m_correction * -1 * (lStick - m_error);
+      endValueRight = endValueLeft * (1 - rStick); 
    }
 
-   else if ((abs(lStick) > m_error) && (-rStick < -m_error)){ //turns foward left
-      endValueLeft = ((0.75) * lStick); // decreases speed
-      endValueRight = ((0.75) * lStick) + (-1 * adrianCoefficent * rStick); // or increase speed
-   }
 
-   else if (abs(lStick) < m_error && abs(rStick) < m_error){
-      endValueLeft = endValueRight =0;
-   }
 
 //Make sure to change "adrianCoefficient" into an actual name 
  

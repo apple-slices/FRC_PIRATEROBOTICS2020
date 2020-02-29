@@ -18,9 +18,13 @@ class PHHSDrive{
 
     double adrianCoefficent = 0.15;
 
+    float tightness = 0.50;
+
+    
 
     float endValueLeft = 0;
     float endValueRight = 0;
+
 
     rev::CANSparkMax* l1MotorFront = new rev::CANSparkMax(m_1lMotorFrontNum, rev::CANSparkMax::MotorType::kBrushless);
     rev::CANSparkMax* r1MotorFront = new rev::CANSparkMax(m_1rMotorFrontNum, rev::CANSparkMax::MotorType::kBrushless);
