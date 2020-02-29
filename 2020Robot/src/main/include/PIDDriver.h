@@ -1,10 +1,11 @@
-#include "Robot.h"
+#pragma once
+
 #include <frc/SmartDashboard/SmartDashboard.h>
 #include "rev/CANSparkMax.h"
 #include "rev/CANEncoder.h"
 #include "rev/CANPIDController.h"
 
-class PIDDriver{
+class PIDDriver {
 private:
     const int lMotorID = 13;
     const int rMotorID = 3;
