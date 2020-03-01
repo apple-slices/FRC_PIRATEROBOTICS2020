@@ -7,7 +7,7 @@
 
 class PIDDriver {
 private:
-    const int lMotorID = 13;
+    const int lMotorID = 12;
     const int rMotorID = 3;
     rev::CANSparkMax lMotor =  rev::CANSparkMax(lMotorID, rev::CANSparkMax::MotorType::kBrushless);
     rev::CANSparkMax rMotor =  rev::CANSparkMax(rMotorID, rev::CANSparkMax::MotorType::kBrushless);
