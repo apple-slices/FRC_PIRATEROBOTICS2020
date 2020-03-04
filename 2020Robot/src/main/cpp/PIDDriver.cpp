@@ -2,19 +2,17 @@
 #include "Robot.h"
 
 int PIDDriver::drive(double distance, bool testing) {
-    // static objects to be reused
-    static rev::CANPIDController lPIDController = rev::CANPIDController(lMotor);
-    static rev::CANPIDController rPIDController = rev::CANPIDController(rMotor);
-    static rev::CANEncoder lEncoder = rev::CANEncoder(lMotor);
-    static rev::CANEncoder rEncoder = rev::CANEncoder(rMotor);
 
     // one-time init stuff
     static bool init = true;
     if (init) {
-        lMotor.RestoreFactoryDefaults();
-        rMotor.RestoreFactoryDefaults();
+        flMotor.RestoreFactoryDefaults();
+        frMotor.RestoreFactoryDefaults();
+        blMotor.RestoreFactoryDefaults();
+        brMotor.RestoreFactoryDefaults();
         init = false;
         if (testing) {
+            // write values to smartdashboard
             frc::SmartDashboard::PutNumber("P Gain", kp);
             frc::SmartDashboard::PutNumber("I Gain", ki);
             frc::SmartDashboard::PutNumber("D Gain", kd);
@@ -38,23 +36,41 @@ int PIDDriver::drive(double distance, bool testing) {
         setPt = frc::SmartDashboard::GetNumber("Set Rotations", 0.0);
     }
 
-    // update parameters
-    lPIDController.SetP(kp);
-    lPIDController.SetI(ki);
-    lPIDController.SetD(kd);
-    lPIDController.SetIZone(iz);
-    lPIDController.SetFF(ff);
-    lPIDController.SetOutputRange(min, max);
-    lPIDController.SetReference(setPt, rev::ControlType::kPosition);
+    // update parameters so pid controllers know what to do
+    flPIDController.SetP(kp);
+    flPIDController.SetI(ki);
+    flPIDController.SetD(kd);
+    flPIDController.SetIZone(iz);
+    flPIDController.SetFF(ff);
+    flPIDController.SetOutputRange(min, max);
+    flPIDController.SetReference(setPt, rev::ControlType::kPosition);
 
-    rPIDController.SetP(kp);
-    rPIDController.SetI(ki);
-    rPIDController.SetD(kd);
-    rPIDController.SetIZone(iz);
-    rPIDController.SetFF(ff);
-    rPIDController.SetOutputRange(min, max);
-    rPIDController.SetReference(setPt, rev::ControlType::kPosition);
+    frPIDController.SetP(kp);
+    frPIDController.SetI(ki);
+    frPIDController.SetD(kd);
+    frPIDController.SetIZone(iz);
+    frPIDController.SetFF(ff);
+    frPIDController.SetOutputRange(min, max);
+    frPIDController.SetReference(setPt, rev::ControlType::kPosition);
 
-    frc::SmartDashboard::PutNumber("Left motor position", lEncoder.GetPosition());
-    frc::SmartDashboard::PutNumber("Right motor position", rEncoder.GetPosition());
+    blPIDController.SetP(kp);
+    blPIDController.SetI(ki);
+    blPIDController.SetD(kd);
+    blPIDController.SetIZone(iz);
+    blPIDController.SetFF(ff);
+    blPIDController.SetOutputRange(min, max);
+    blPIDController.SetReference(setPt, rev::ControlType::kPosition);
+
+    brPIDController.SetP(kp);
+    brPIDController.SetI(ki);
+    brPIDController.SetD(kd);
+    brPIDController.SetIZone(iz);
+    brPIDController.SetFF(ff);
+    brPIDController.SetOutputRange(min, max);
+    brPIDController.SetReference(setPt, rev::ControlType::kPosition);
+
+    frc::SmartDashboard::PutNumber("FL motor position", flEncoder.GetPosition());
+    frc::SmartDashboard::PutNumber("FR motor position", frEncoder.GetPosition());
+    frc::SmartDashboard::PutNumber("BL motor position", blEncoder.GetPosition());
+    frc::SmartDashboard::PutNumber("BR motor position", brEncoder.GetPosition());
 }
