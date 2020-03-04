@@ -6,7 +6,6 @@
 /*----------------------------------------------------------------------------*/
 
 #pragma once
-#ifndef SHOOTER 
 
 //WPILib includes
 #include <frc/TimedRobot.h>
@@ -22,15 +21,13 @@
 
 //CTRE includes
 #include "ctre/Phoenix.h"
-#include "shooter.h"
+#include "Shooter.h"
 
 //PHHS includes
 #include <chrono>
 
 class Robot : public frc::TimedRobot {
 private:
-
-PHHSShooter shooter;
 
  frc::Joystick  m_stick{0};
 
@@ -46,5 +43,3 @@ PHHSShooter shooter;
   void TestInit() override;
   void TestPeriodic() override;
 };
-
-#endif
