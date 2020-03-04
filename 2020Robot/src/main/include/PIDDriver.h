@@ -7,14 +7,16 @@
 
 class PIDDriver {
 private:
-    const int lMotorID = 12;
-    const int rMotorID = 3;
+    const int flMotorID = 12;
+    const int frMotorID = 3;
+    const int blMotorID = 0;
+    const int brMotorID = 0;
 
     // fl, fr, bl, br = front left, front right, back left, back right
-    rev::CANSparkMax flMotor = rev::CANSparkMax(lMotorID, rev::CANSparkMax::MotorType::kBrushless);
-    rev::CANSparkMax frMotor = rev::CANSparkMax(rMotorID, rev::CANSparkMax::MotorType::kBrushless);
-    rev::CANSparkMax blMotor = rev::CANSparkMax(lMotorID, rev::CANSparkMax::MotorType::kBrushless);
-    rev::CANSparkMax brMotor = rev::CANSparkMax(rMotorID, rev::CANSparkMax::MotorType::kBrushless);
+    rev::CANSparkMax flMotor = rev::CANSparkMax(flMotorID, rev::CANSparkMax::MotorType::kBrushless);
+    rev::CANSparkMax frMotor = rev::CANSparkMax(frMotorID, rev::CANSparkMax::MotorType::kBrushless);
+    rev::CANSparkMax blMotor = rev::CANSparkMax(blMotorID, rev::CANSparkMax::MotorType::kBrushless);
+    rev::CANSparkMax brMotor = rev::CANSparkMax(brMotorID, rev::CANSparkMax::MotorType::kBrushless);
 
     // will do the pid calculations for us
     rev::CANPIDController flPIDController = rev::CANPIDController(flMotor);
