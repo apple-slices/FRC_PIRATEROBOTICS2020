@@ -39,5 +39,12 @@ private:
     double setPt = 0.0;
 
 public:
-    int drive(double distance, bool testing = false);
+    int drive(bool testing = false);
+    void setDistance(double distance) {
+        setPt = distance;
+        flMotor.RestoreFactoryDefaults();
+        frMotor.RestoreFactoryDefaults();
+        blMotor.RestoreFactoryDefaults();
+        brMotor.RestoreFactoryDefaults();
+    }
 };
