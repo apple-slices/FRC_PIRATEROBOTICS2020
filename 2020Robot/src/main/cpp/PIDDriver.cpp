@@ -73,4 +73,9 @@ int PIDDriver::drive(double distance, bool testing) {
     frc::SmartDashboard::PutNumber("FR motor position", frEncoder.GetPosition());
     frc::SmartDashboard::PutNumber("BL motor position", blEncoder.GetPosition());
     frc::SmartDashboard::PutNumber("BR motor position", brEncoder.GetPosition());
+
+    frc::SmartDashboard::PutNumber("FL moter velocity", flEncoder.GetVelocity());
+    frc::SmartDashboard::PutNumber("FR moter velocity", frEncoder.GetVelocity());
+    frc::SmartDashboard::PutNumber("BL moter velocity", blEncoder.GetVelocity());
+    frc::SmartDashboard::PutNumber("BR moter velocity", brEncoder.GetVelocity());
 }
