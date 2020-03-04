@@ -7,7 +7,7 @@
 
 class PIDDriver {
 private:
-    const int lMotorID = 13;
+    const int lMotorID = 12;
     const int rMotorID = 3;
 
     // fl, fr, bl, br = front left, front right, back left, back right
