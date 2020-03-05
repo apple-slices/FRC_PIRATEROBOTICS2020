@@ -12,8 +12,6 @@
 
 void Robot::RobotInit() {
     
-  //  intake.motorInit();
-
    intake.MotorDefault();
 
 } 
@@ -56,7 +54,7 @@ void Robot::TeleopPeriodic() {
     {
         intake.suckSpeed(PHHSIntake::kIntakeMotor);
     }
-    else//(m_stick.GetRawButton(PHHSIntake::kIntakemotorBtn)) 
+    else
     {
         intake.suckSpeedOff(PHHSIntake::kIntakeMotorOff);
     }

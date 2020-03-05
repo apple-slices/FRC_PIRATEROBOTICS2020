@@ -15,11 +15,6 @@ private:
 const int kIntakeHID = 0;
 const int kIntakeMotorID = 2;
 
-//Motor Control limits 
-const int kPeakCurrentAmpIntake = 40; //Max. before tirggering current limit 
-const int kPeakCurrentAmpIndexing = 40; //Max. before tiggering current limit 
-const float kContinCurrentAmps = 205; //hold current after limit is tirgged
-
 
 //Motor Control Time 
 const int kTimeoutMs = 5; //How much time to check (if 0 then it will skip the check)
@@ -36,8 +31,10 @@ public:
 //motor speed 
 constexpr static float kIntakeMotorOff = 0.0;
 constexpr static float kIntakeMotor = 1.0;
+
 constexpr static float kDownwardMotor = 0.8; 
 constexpr static float kDownwardMotorOff = 0.0;
+
 constexpr static float kUpwardMotor = -0.5;
 constexpr static float kUpwardMotorOff = 0.0;
 
