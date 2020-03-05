@@ -26,21 +26,13 @@ void PHHSIntake::raiseIntake(float motorSpeed)
     m_intakeheight.Set(motorSpeed);
 }
 
-void PHHSIntake::upTime(int time)
-{
-    
-}
-
-void PHHSIntake::downTime(int time)
-{
-
-}
 
 void PHHSIntake::IntakeOff(float motorSpeed)
 {
     m_intakeheight.Set(0.0);
 }
-void PHHSIntake::motorInit()
+
+/*void PHHSIntake::motorInit()
 {
     
     m_intakeheight.SetInverted(false);
@@ -63,6 +55,12 @@ void PHHSIntake::motorInit()
     m_intakeheight.ConfigContinuousCurrentLimit(kContinCurrentAmps, kTimeoutMs);
     m_intakeMotor.ConfigContinuousCurrentLimit(kContinCurrentAmps, kTimeoutMs);
 
+} */
+
+void PHHSIntake::MotorDefault()
+{
+    m_intakeheight.ConfigFactoryDefault(kTimeoutMs);
+    m_intakeMotor.ConfigFactoryDefault(kTimeoutMs);
 }
 
 

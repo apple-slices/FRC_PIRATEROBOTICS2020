@@ -3,6 +3,8 @@
 #define INTAKE
 
 #include "ctre/Phoenix.h"
+#include <frc2/Timer.h>
+
 
 
 class PHHSIntake
@@ -14,9 +16,9 @@ const int kIntakeHID = 0;
 const int kIntakeMotorID = 2;
 
 //Motor Control limits 
-const int kPeakCurrentAmpIntake = 25; //Max. before tirggering current limit 
-const int kPeakCurrentAmpIndexing = 25; //Max. before tiggering current limit 
-const float kContinCurrentAmps = 0.0; //hold current after limit is tirgged
+const int kPeakCurrentAmpIntake = 40; //Max. before tirggering current limit 
+const int kPeakCurrentAmpIndexing = 40; //Max. before tiggering current limit 
+const float kContinCurrentAmps = 205; //hold current after limit is tirgged
 
 
 //Motor Control Time 
@@ -28,14 +30,17 @@ const int kPeakTimeMs = 0; //How long after peak current to stop motors
 //const float kIntakeDown = 1.0;
 
 WPI_TalonSRX m_intakeheight{kIntakeHID};
-WPI_VictorSPX m_intakeMotor{kIntakeMotorID};
+WPI_TalonSRX m_intakeMotor{kIntakeMotorID};
 
 public:
 //motor speed 
 constexpr static float kIntakeMotorOff = 0.0;
 constexpr static float kIntakeMotor = 1.0;
-constexpr static float kDownwardMotor = 1.0; 
-constexpr static float kUpwardMotor = -1.0;
+constexpr static float kDownwardMotor = 0.8; 
+constexpr static float kDownwardMotorOff = 0.0;
+constexpr static float kUpwardMotor = -0.5;
+constexpr static float kUpwardMotorOff = 0.0;
+
 //Joystick ID 
 constexpr static int kUpwardMotorBtn = 1; //button A on Xbox 360 
 constexpr static int kDownwardMotorBtn = 2; //button B on Xbox 360 
@@ -52,16 +57,13 @@ void suckSpeedOff(float speed);
 void lowerIntake(float motorSpeed); 
 //Button Toggle to move intake system upwards
 void raiseIntake(float motorSpeed);
-//Time to raise the intake up 
-void upTime(int time);
-//Time to lower the intake down 
-void downTime(int time);
 //Intake motor off
 void IntakeOff(float motorSpeed);
 
 
 void motorInit();
 
-void robotMotorInit();
+void MotorDefault();
+
 };
 #endif

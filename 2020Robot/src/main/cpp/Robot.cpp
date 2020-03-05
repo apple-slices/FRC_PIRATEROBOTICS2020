@@ -12,8 +12,10 @@
 
 void Robot::RobotInit() {
     
-   intake.motorInit();
-   
+  //  intake.motorInit();
+
+   intake.MotorDefault();
+
 } 
 
 void Robot::AutonomousInit() {}
@@ -28,37 +30,37 @@ void Robot::TeleopPeriodic() {
     
     if(m_stick.GetRawButton(PHHSIntake::kDownwardMotorBtn))
     {
-        auto start = high_resolution_clock::now();
-
         intake.lowerIntake(PHHSIntake::kDownwardMotor);
-
-        auto duration = duration_cast<microseconds>(stop - start);
-
+        MyTime.Reset();
+        MyTime.Start();
     }
-    if(intake.upTime>now())
+    else if(MyTime.Get()>1)
     {
-        intake.lowerIntake();
-        else
-        {
-            intake.off();
-        }
-        
+        MyTime.Stop();
+        intake.lowerIntake(PHHSIntake::kDownwardMotorOff);
     }
-
+    
     if(m_stick.GetRawButton(PHHSIntake::kUpwardMotorBtn))
     {
         intake.raiseIntake(PHHSIntake::kUpwardMotor);
+        MyTime.Reset();
+        MyTime.Start();
+    }
+    else if(MyTime.Get()>1)
+    {
+        MyTime.Stop();
+        intake.raiseIntake(PHHSIntake::kUpwardMotorOff);
     }
 
     if(m_stick.GetRawButton(PHHSIntake::kIntakemotorBtn))
     {
         intake.suckSpeed(PHHSIntake::kIntakeMotor);
     }
-
-    if(m_stick.GetRawButton(PHHSIntake::kIntakeMotorOffBtn))
+    else//(m_stick.GetRawButton(PHHSIntake::kIntakemotorBtn)) 
     {
         intake.suckSpeedOff(PHHSIntake::kIntakeMotorOff);
     }
+
 
 }
 
