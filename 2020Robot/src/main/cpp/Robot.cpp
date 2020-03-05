@@ -8,14 +8,14 @@
 #include "Robot.h"
 #include "DriveBase.h"
 #include "intake.h"
-#include "Climb.h"
+#include "climb.h"
 
 void Robot::RobotInit() {
     
    intake.robotMotorInit(); 
 
    //initialize solenoid
-    m_solenoid = new frc::Solenoid(1); //this channel is temporary waiting for physical channel to arrive
+    m_solenoid = new frc::Solenoid(2,4); 
 }
 
 void Robot::AutonomousInit() {}
@@ -56,7 +56,7 @@ void Robot::TeleopPeriodic() {
         climb.ClimbDown(m_solenoid);
     }
 
-    if(m_compressor.GetRawButton(PHHSClimb::kCompressorOnBtn))
+   /* if(m_compressor.GetRawButton(PHHSClimb::kCompressorOnBtn))
     {
         climb.CompressorOn(PHHSClimb::kOn);
     }
@@ -65,8 +65,8 @@ void Robot::TeleopPeriodic() {
     {
         climb.CompressorOff(PHHSClimb::kOff);
     }
-
-}
+*/
+} 
 
 void Robot::TestInit() {}
 void Robot::TestPeriodic() {}
