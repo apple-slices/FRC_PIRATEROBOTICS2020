@@ -26,13 +26,20 @@ class PHHSDrive{
     rev::CANSparkMax* r2MotorFront = new rev::CANSparkMax(m_2rMotorFrontNum, rev::CANSparkMax::MotorType::kBrushless);
     
     //Ramp Piecewise
-    float p1_correction = m_error * (0.75);
-    float p2_correction = m_error * (4);
+    
+    float sensativityChange = 0.4; //when the piecewise switches sensativity
+    float startingSensativity = 0.25; //starting sensativity before the switch
+
+    float endSensativitySlope = ((1-startingSensativity)/(1-sensativityChange)); //slope of the sensativity after the change
+   
+
+    float endY = (sensativityChange-m_error)*startingSensativity*m_error;
 
     //Ramp Exponetial 
 
     float m_exponential = m_correction * m_correction; 
-
+ 
+    
     public:
     const static int axisForUpDown = 1; //1 is for joystick left
     const static int axisForLeftRight = 2; //2 is for joystick right

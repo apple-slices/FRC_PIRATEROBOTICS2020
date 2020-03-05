@@ -23,12 +23,12 @@ void PHHSDrive::arcadeDrive(float laStick, float rStick){
       endValueRight =  m_correction *(rStick - m_error);
    }
   
-   else if (lStick > m_error && abs(rStick)< m_error){ // forward or back
+   else if (lStick > m_error && abs(rStick)< m_error){ // forward
       endValueRight = m_correction * -1 * (lStick - m_error);
       endValueLeft  = m_correction * -1 * (lStick - m_error);
    }
 
-   else if (lStick < -m_error && abs(rStick)< m_error){ // forward or back
+   else if (lStick < -m_error && abs(rStick)< m_error){ // back
       endValueRight = m_correction * -1 * (lStick + m_error);
       endValueLeft  = m_correction * -1 * (lStick + m_error);
    }
@@ -151,40 +151,49 @@ void PHHSDrive::pieceWiseDrive(float laStick, float rStick){
    
    
    if (abs(rStick) > m_error && abs(lStick) < m_error){ // turning left or right in place
-      if(abs(rStick) < 0.25){
-         endValueLeft = p1_correction *(-rStick + m_error); 
-         endValueRight =  p1_correction *(rStick - m_error);
+      if(abs(rStick) < startingSensativity){
+         endValueLeft = startingSensativity * m_error(-rStick + m_error); 
+         endValueRight =  startingSensativity *m_error(rStick - m_error);
       }
-      else if(abs(rStick) > 0.25){
-         endValueLeft = p2_correction *(-rStick + m_error); 
-         endValueRight =  p2_correction *(rStick - m_error);
+      else if(abs(rStick) > startingSensativity){
+         if(rStick < 0){ //turn left
+            endValueLeft = endSensativitySlope *(-rStick + m_error) - endY; 
+            endValueRight =   endSensativitySlope *(rStick - m_error) + endY;
+         }
+         else if(rStick > 0){ //turns right
+             endValueRight = endSensativitySlope *(-rStick + m_error) - endY; 
+             endValueLeft =   endSensativitySlope *(rStick - m_error) + endY;
+         }
       }
    }
   
-   else if (lStick > m_error && abs(rStick)< m_error){ // forward or back
-      if(abs(lStick) < 0.25){
-         endValueRight = p1_correction * -1 * (lStick - m_error);
-         endValueLeft  = p1_correction * -1 * (lStick - m_error);
+   else if (lStick > m_error && abs(rStick)< m_error){ // forward 
+      if(lStick < startingSensativity){ //low sensativity
+         endValueRight = m_correction * -1 * (lStick - m_error) * startingSensativity;
+         endValueLeft  = m_correction * -1 * (lStick - m_error) * startingSensativity;
       }
-      else if(abs(lStick) > 0.25){
-         endValueRight = p2_correction * -1 * (lStick - m_error);
-         endValueLeft  = p2_correction * -1 * (lStick - m_error);
-      }     
-      
+
+      else if(lStick > startingSensativity){
+         endValueRight = endSensativitySlope * -1 * (lStick - m_error) - endY;
+         endValueLeft  = endSensativitySlope * -1 * (lStick - m_error) -endY;
+      } 
    }
 
-   else if (lStick < -m_error && abs(rStick)< m_error){ // forward or back
-      if(abs(lStick) < 0.25){
-         endValueRight = p1_correction * -1 * (lStick + m_error);
-         endValueLeft  = p1_correction * -1 * (lStick + m_error);
+   else if (-lStick < -m_error && abs(rStick)< m_error){ // forward 
+      if(lStick < startingSensativity){ //low sensativity
+         endValueRight = m_correction * (lStick - m_error) * startingSensativity;
+         endValueLeft  = m_correction * (lStick - m_error) * startingSensativity;
       }
-      else if(abs(lStick) > 0.25){
-         endValueRight = p2_correction * -1 * (lStick + m_error);
-         endValueLeft  = p2_correction * -1 * (lStick + m_error);
-      }   
+
+      else if(lStick > startingSensativity){
+         endValueRight = endSensativitySlope * (lStick - m_error) + endY;
+         endValueLeft  = endSensativitySlope * (lStick - m_error) + endY;
+      } 
    }
+
 
    else if ((lStick > m_error) && (rStick < m_error)){ //turns foward left
+      
       endValueRight  = m_correction * -1 * (lStick - m_error);
       endValueLeft = endValueRight * (1 + rStick); 
    }
