@@ -26,7 +26,7 @@
 #include "intake.h"
 #include "driveControl.h"
 #include "Climb.h"
-#include "frc/Solenoid.h"
+#include <frc/Solenoid.h>
 
 class Robot : public frc::TimedRobot {
  private:
@@ -34,7 +34,7 @@ class Robot : public frc::TimedRobot {
   PHHSDrive     driveBase;
   PHHSClimb     climb;
   frc::Joystick m_stick{0}; 
-  frc::Solenoid m_solenoid{0};
+  frc::Solenoid* m_solenoid;
  public:
   void RobotInit() override;
 

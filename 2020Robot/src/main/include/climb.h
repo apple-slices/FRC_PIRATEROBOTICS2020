@@ -11,8 +11,6 @@ class PHHSClimb
     private:
     //Single Solenoid
     constexpr static int kSolenoid = 1; 
-
-    
     
     public:
     
@@ -23,9 +21,9 @@ class PHHSClimb
     bool  kUp = true;
     bool  kDown = false;
 
-    void ClimbUp(bool);
+    void ClimbUp(frc::Solenoid*);
 
-    void ClimbDown(bool);
+    void ClimbDown(frc::Solenoid*);
 
 
 

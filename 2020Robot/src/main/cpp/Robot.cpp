@@ -14,6 +14,8 @@ void Robot::RobotInit() {
     
    intake.robotMotorInit(); 
 
+   //initialize solenoid
+    m_solenoid = new frc::Solenoid(1); //this channel is temporary waiting for physical channel to arrive
 }
 
 void Robot::AutonomousInit() {}
@@ -44,14 +46,14 @@ void Robot::TeleopPeriodic() {
         intake.suckSpeedOff(PHHSIntake::kIntakeMotorOff);
     }
 
-    if(m_solenoid.GetRawButton(PHHSClimb::kClimbUpBtn))
+    if(m_stick.GetRawButton(PHHSClimb::kClimbUpBtn))
     {
-        climb.ClimbUp(PHHSClimb::kUp);
+        climb.ClimbUp(m_solenoid);
     }
 
-    if(m_solenoid.GetRawButton(PHHSClimb::kClimbDownBtn))
+    if(m_stick.GetRawButton(PHHSClimb::kClimbDownBtn))
     {
-        climb.ClimbDown(PHHSClimb::kDown);
+        climb.ClimbDown(m_solenoid);
     }
 
     if(m_compressor.GetRawButton(PHHSClimb::kCompressorOnBtn))

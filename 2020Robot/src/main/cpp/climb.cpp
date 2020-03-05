@@ -3,12 +3,12 @@
 
 #include "Climb.h"
 
-void PHHSClimb:: ClimbUp(bool)
+void PHHSClimb:: ClimbUp(frc::Solenoid* solenoid)
 {
-    kSolenoid.Set(true);
+    solenoid->Set(true);
 }
 
-void PHHSClimb::ClimbDown(bool)
+void PHHSClimb::ClimbDown(frc::Solenoid* solenoid)
 {
-    kSolenoid.Set(false);
+    solenoid->Set(false);
 }
