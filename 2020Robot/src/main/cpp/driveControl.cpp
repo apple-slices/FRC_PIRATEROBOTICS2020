@@ -152,8 +152,8 @@ void PHHSDrive::pieceWiseDrive(float laStick, float rStick){
    
    if (abs(rStick) > m_error && abs(lStick) < m_error){ // turning left or right in place
       if(abs(rStick) < startingSensativity){
-         endValueLeft = startingSensativity * m_error(-rStick + m_error); 
-         endValueRight =  startingSensativity *m_error(rStick - m_error);
+         endValueLeft = startingSensativity * m_error * (-rStick + m_error); 
+         endValueRight =  startingSensativity *m_error * (rStick - m_error);
       }
       else if(abs(rStick) > startingSensativity){
          if(rStick < 0){ //turn left
