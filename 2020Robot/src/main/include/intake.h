@@ -3,6 +3,8 @@
 #define INTAKE
 
 #include "ctre/Phoenix.h"
+#include <frc2/Timer.h>
+
 
 
 class PHHSIntake
@@ -10,36 +12,39 @@ class PHHSIntake
 
 private:
 //motor IDs
-const int kIntakemotorID = 1;
-const int kIndexingMotorID = 0;
+const int kIntakeHID = 0;
+const int kIntakeMotorID = 2;
 
-//Motor Control limits 
-const int kPeakCurrentAmpIntake = 40; //Max. before tirggering current limit 
-const int kPeakCurrentAmpIndexing = 40; //Max. before tiggering current limit 
-const int kContinCurrentAmps = 40; //hold current after limit is tirgged
 
 //Motor Control Time 
-const int kTimeoutMs = 0; //How much time to check (if 0 then it will skip the check)
+const int kTimeoutMs = 5; //How much time to check (if 0 then it will skip the check)
 const int kPeakTimeMs = 0; //How long after peak current to stop motors
 
 
 
-const float kIntakeDown = 1.0;
+//const float kIntakeDown = 1.0;
 
-WPI_TalonSRX m_intakeMotor{kIntakemotorID};
-WPI_TalonSRX m_indexingMotor{kIndexingMotorID};
+WPI_TalonSRX m_intakeheight{kIntakeHID};
+WPI_TalonSRX m_intakeMotor{kIntakeMotorID};
 
 public:
 //motor speed 
-constexpr static float kDownwardMotor = 1.0;
-constexpr static float kUpwardMotor = -1.0;
-constexpr static float kIntakeMotor = 1.0; 
 constexpr static float kIntakeMotorOff = 0.0;
+constexpr static float kIntakeMotor = 1.0;
+
+constexpr static float kDownwardMotor = 0.8; 
+constexpr static float kDownwardMotorOff = 0.0;
+
+constexpr static float kUpwardMotor = -0.5;
+constexpr static float kUpwardMotorOff = 0.0;
+
 //Joystick ID 
-constexpr static int kDownwardMotorBtn = 1; //button A on Xbox 360 
-constexpr static int kUpwardMotorBtn = 2; //button B on Xbox 360 
+constexpr static int kUpwardMotorBtn = 1; //button A on Xbox 360 
+constexpr static int kDownwardMotorBtn = 2; //button B on Xbox 360 
 constexpr static int kIntakemotorBtn = 3; //Button "X" on the Xbox 360 
 constexpr static int kIntakeMotorOffBtn = 4; //Button "Y" on the Xbox 360 
+
+
 
 //Button Toggle to turn on Intake Motor
 void suckSpeed(float speed);
@@ -49,10 +54,13 @@ void suckSpeedOff(float speed);
 void lowerIntake(float motorSpeed); 
 //Button Toggle to move intake system upwards
 void raiseIntake(float motorSpeed);
+//Intake motor off
+void IntakeOff(float motorSpeed);
 
 
 void motorInit();
 
-void robotMotorInit();
+void MotorDefault();
+
 };
 #endif

@@ -17,5 +17,6 @@
   "files.associations": {
     "*.tcc": "cpp",
     "*.inc": "cpp"
-  }
+  },
+  "git.ignoreLimitWarning": true
 }

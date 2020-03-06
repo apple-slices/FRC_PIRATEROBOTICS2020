@@ -10,7 +10,7 @@ class PHHSDrive{
     const int m_lMotorFrontNum = 3;
     const int m_rMotorFrontNum = 13;
     const double m_neutral = 0; 
-    const float m_error = 0.1;
+    const float m_error = 1.0;
     double m_correction = ((1.0)/(1.0-m_error));
 
     float endValueLeft = 0;

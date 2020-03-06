@@ -12,15 +12,16 @@
 
 void Robot::RobotInit() {
     
-   intake.robotMotorInit(); 
+   intake.MotorDefault();
 
-   intake.motorInit();
 } 
 
 void Robot::AutonomousInit() {}
 void Robot::AutonomousPeriodic() {}
 
-void Robot::TeleopInit() {}
+void Robot::TeleopInit() {
+    
+}
 void Robot::TeleopPeriodic() {
      
     driveBase.arcadeDriveCalculate(m_stick.GetRawAxis(PHHSDrive::axisForUpDown), m_stick.GetRawAxis(PHHSDrive::axisForLeftRight));
@@ -28,22 +29,36 @@ void Robot::TeleopPeriodic() {
     if(m_stick.GetRawButton(PHHSIntake::kDownwardMotorBtn))
     {
         intake.lowerIntake(PHHSIntake::kDownwardMotor);
+        MyTime.Reset();
+        MyTime.Start();
     }
-
+    else if(MyTime.Get()>1)
+    {
+        MyTime.Stop();
+        intake.lowerIntake(PHHSIntake::kDownwardMotorOff);
+    }
+    
     if(m_stick.GetRawButton(PHHSIntake::kUpwardMotorBtn))
     {
         intake.raiseIntake(PHHSIntake::kUpwardMotor);
+        MyTime.Reset();
+        MyTime.Start();
+    }
+    else if(MyTime.Get()>1)
+    {
+        MyTime.Stop();
+        intake.raiseIntake(PHHSIntake::kUpwardMotorOff);
     }
 
     if(m_stick.GetRawButton(PHHSIntake::kIntakemotorBtn))
     {
         intake.suckSpeed(PHHSIntake::kIntakeMotor);
     }
-
-    if(m_stick.GetRawButton(PHHSIntake::kIntakeMotorOffBtn))
+    else
     {
         intake.suckSpeedOff(PHHSIntake::kIntakeMotorOff);
     }
+
 
 }
 

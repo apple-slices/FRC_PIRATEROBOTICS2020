@@ -25,11 +25,13 @@
 //PHHS includes
 #include "intake.h"
 #include "driveControl.h"
+#include <frc2/Timer.h>
 
 class Robot : public frc::TimedRobot {
  private:
   PHHSIntake    intake;
   PHHSDrive     driveBase;
+  frc::Timer     MyTime;
   frc::Joystick m_stick{0}; 
  public:
   void RobotInit() override;
