@@ -12,9 +12,11 @@
 void Robot::RobotInit() {}
 
 void Robot::AutonomousInit() {
+    pid.setDistance(5.0);
+    pid.display();
 }
 void Robot::AutonomousPeriodic() {
-    pid.drive(5.0, true);
+    pid.drive(true);
 }
 
 void Robot::TeleopInit() {}

@@ -2,21 +2,6 @@
 #include "Robot.h"
 
 int PIDDriver::drive(bool testing) {
-    // one-time init stuff
-    static bool init = true;
-    if (init && testing) {
-        init = false;
-        // write values to smartdashboard
-        frc::SmartDashboard::PutNumber("P Gain", kp);
-        frc::SmartDashboard::PutNumber("I Gain", ki);
-        frc::SmartDashboard::PutNumber("D Gain", kd);
-        frc::SmartDashboard::PutNumber("I Zone", iz);
-        frc::SmartDashboard::PutNumber("Feed Forward", ff);
-        frc::SmartDashboard::PutNumber("Max Output", min);
-        frc::SmartDashboard::PutNumber("Min Output", max);
-        frc::SmartDashboard::PutNumber("Set Rotations", 0);
-    }
-
     // tweak constants in testing mode
     if (testing) {
         frc::SmartDashboard::PutNumber("FL motor position", flEncoder.GetPosition());
@@ -40,35 +25,35 @@ int PIDDriver::drive(bool testing) {
     }
 
     // update parameters so pid controllers know what to do
-    flPIDController.SetP(kp);
-    flPIDController.SetI(ki);
-    flPIDController.SetD(kd);
-    flPIDController.SetIZone(iz);
-    flPIDController.SetFF(ff);
-    flPIDController.SetOutputRange(min, max);
-    flPIDController.SetReference(setPt, rev::ControlType::kPosition);
+    flController.SetP(kp);
+    flController.SetI(ki);
+    flController.SetD(kd);
+    flController.SetIZone(iz);
+    flController.SetFF(ff);
+    flController.SetOutputRange(min, max);
+    flController.SetReference(setPt, rev::ControlType::kPosition);
 
-    frPIDController.SetP(kp);
-    frPIDController.SetI(ki);
-    frPIDController.SetD(kd);
-    frPIDController.SetIZone(iz);
-    frPIDController.SetFF(ff);
-    frPIDController.SetOutputRange(min, max);
-    frPIDController.SetReference(setPt, rev::ControlType::kPosition);
+    frController.SetP(kp);
+    frController.SetI(ki);
+    frController.SetD(kd);
+    frController.SetIZone(iz);
+    frController.SetFF(ff);
+    frController.SetOutputRange(min, max);
+    frController.SetReference(setPt, rev::ControlType::kPosition);
 
-    blPIDController.SetP(kp);
-    blPIDController.SetI(ki);
-    blPIDController.SetD(kd);
-    blPIDController.SetIZone(iz);
-    blPIDController.SetFF(ff);
-    blPIDController.SetOutputRange(min, max);
-    blPIDController.SetReference(setPt, rev::ControlType::kPosition);
+    blController.SetP(kp);
+    blController.SetI(ki);
+    blController.SetD(kd);
+    blController.SetIZone(iz);
+    blController.SetFF(ff);
+    blController.SetOutputRange(min, max);
+    blController.SetReference(setPt, rev::ControlType::kPosition);
 
-    brPIDController.SetP(kp);
-    brPIDController.SetI(ki);
-    brPIDController.SetD(kd);
-    brPIDController.SetIZone(iz);
-    brPIDController.SetFF(ff);
-    brPIDController.SetOutputRange(min, max);
-    brPIDController.SetReference(setPt, rev::ControlType::kPosition);
+    brController.SetP(kp);
+    brController.SetI(ki);
+    brController.SetD(kd);
+    brController.SetIZone(iz);
+    brController.SetFF(ff);
+    brController.SetOutputRange(min, max);
+    brController.SetReference(setPt, rev::ControlType::kPosition);
 }
