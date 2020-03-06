@@ -43,6 +43,7 @@ private:
 
 public:
     PIDDriver() {
+        // Explicitly sets encoder, so hopefully it detects it
         flController.SetFeedbackDevice(flEncoder);
         frController.SetFeedbackDevice(frEncoder);
         blController.SetFeedbackDevice(blEncoder);
