@@ -58,7 +58,7 @@ void Robot::TeleopPeriodic() {
     {
         intake.suckSpeedOff(PHHSIntake::kIntakeMotorOff);
     }
-//Code for Indexing Motors
+//Code for indexing motor
     if(m_stick.GetRawButton(PHHSIndex::kIndexingMotorBtn))
     {
         index.on(PHHSIndex::kindexingMotorOn);
@@ -67,7 +67,9 @@ void Robot::TeleopPeriodic() {
     }
     else if(MyTime.Get()>0.7)
     {
+        MyTime.Stop();
         index.off(PHHSIndex::kindexingMotorOff);
+
     }
 
 
