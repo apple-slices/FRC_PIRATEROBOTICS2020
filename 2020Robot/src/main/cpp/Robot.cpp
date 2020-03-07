@@ -65,7 +65,7 @@ void Robot::TeleopPeriodic() {
         MyTime.Reset();
         MyTime.Start();
     }
-    else if(MyTime.Get()>0.7)
+    else if(MyTime.Get()>1)
     {
         MyTime.Stop();
         index.off(PHHSIndex::kindexingMotorOff);
