@@ -21,11 +21,13 @@ void Robot::TeleopInit() {
 }
 void Robot::TeleopPeriodic() 
 {
-   shooter.read();
+    shooter.read();
     if(m_stick.GetRawButton(Shooter::onBtnID))
     {
+        frc::SmartDashboard::PutString("Joystick", "on");
         shooter.shooterOn();
     } else {
+        frc::SmartDashboard::PutString("Joystick", "off");
         shooter.shooterOff();
     }
 }
