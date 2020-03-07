@@ -5,7 +5,8 @@
 #include "rev/CANEncoder.h"
 #include "rev/CANPIDController.h"
 
-class PIDDriver {
+class PIDDriver
+{
 private:
     const int flMotorID = 12;
     const int frMotorID = 3;
@@ -42,37 +43,11 @@ private:
     double tolerance = 1.0;
 
 public:
-    PIDDriver() {
-        // Explicitly sets encoder, so hopefully it detects it
-        flController.SetFeedbackDevice(flEncoder);
-        frController.SetFeedbackDevice(frEncoder);
-        blController.SetFeedbackDevice(blEncoder);
-        brController.SetFeedbackDevice(brEncoder);
-        
-        flController.SetSmartMotionAllowedClosedLoopError(tolerance);
-        frController.SetSmartMotionAllowedClosedLoopError(tolerance);
-        blController.SetSmartMotionAllowedClosedLoopError(tolerance);
-        brController.SetSmartMotionAllowedClosedLoopError(tolerance);
-    }
+    PIDDriver();
 
-    int drive(bool testing = false);
+    void drive(double distance);
+    void stop();
 
-    void setDistance(double distance) {
-        setPt = distance;
-        flMotor.RestoreFactoryDefaults();
-        frMotor.RestoreFactoryDefaults();
-        blMotor.RestoreFactoryDefaults();
-        brMotor.RestoreFactoryDefaults();
-    }
-
-    void display() {
-        frc::SmartDashboard::PutNumber("P Gain", kp);
-        frc::SmartDashboard::PutNumber("I Gain", ki);
-        frc::SmartDashboard::PutNumber("D Gain", kd);
-        frc::SmartDashboard::PutNumber("I Zone", iz);
-        frc::SmartDashboard::PutNumber("Feed Forward", ff);
-        frc::SmartDashboard::PutNumber("Max Output", min);
-        frc::SmartDashboard::PutNumber("Min Output", max);
-        frc::SmartDashboard::PutNumber("Set Rotations", 0);
-    }
+    void display();
+    void read();
 };

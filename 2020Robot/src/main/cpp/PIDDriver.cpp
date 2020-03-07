@@ -1,37 +1,38 @@
-// Jason Cheng / Jason Nguyen
-#include "Robot.h"
+// Jason Cheng
+#include "PIDDriver.h"
 
-int PIDDriver::drive(bool testing) {
-    // tweak constants in testing mode
-    if (testing) {
-        frc::SmartDashboard::PutNumber("FL motor position", flEncoder.GetPosition());
-        frc::SmartDashboard::PutNumber("FR motor position", frEncoder.GetPosition());
-        frc::SmartDashboard::PutNumber("BL motor position", blEncoder.GetPosition());
-        frc::SmartDashboard::PutNumber("BR motor position", brEncoder.GetPosition());
+PIDDriver::PIDDriver()
+{
+    // Explicitly sets encoder, so hopefully it detects it
+    flController.SetFeedbackDevice(flEncoder);
+    frController.SetFeedbackDevice(frEncoder);
+    blController.SetFeedbackDevice(blEncoder);
+    brController.SetFeedbackDevice(brEncoder);
 
-        frc::SmartDashboard::PutNumber("FL moter velocity", flEncoder.GetVelocity());
-        frc::SmartDashboard::PutNumber("FR moter velocity", frEncoder.GetVelocity());
-        frc::SmartDashboard::PutNumber("BL moter velocity", blEncoder.GetVelocity());
-        frc::SmartDashboard::PutNumber("BR moter velocity", brEncoder.GetVelocity());
-        
-        kp = frc::SmartDashboard::GetNumber("P Gain", 0.0);
-        ki = frc::SmartDashboard::GetNumber("I Gain", 0.0);
-        kd = frc::SmartDashboard::GetNumber("D Gain", 0.0);
-        iz = frc::SmartDashboard::GetNumber("I Zone", 0.0);
-        ff = frc::SmartDashboard::GetNumber("Feed Forward", 0.0);
-        max = frc::SmartDashboard::GetNumber("Max Output", 0.0);
-        min = frc::SmartDashboard::GetNumber("Min Output", 0.0);
-        setPt = frc::SmartDashboard::GetNumber("Set Rotations", 0.0);
-    }
+    flController.SetSmartMotionAllowedClosedLoopError(tolerance);
+    frController.SetSmartMotionAllowedClosedLoopError(tolerance);
+    blController.SetSmartMotionAllowedClosedLoopError(tolerance);
+    brController.SetSmartMotionAllowedClosedLoopError(tolerance);
 
-    // update parameters so pid controllers know what to do
+    read();
+}
+
+void PIDDriver::read()
+{
+    kp = frc::SmartDashboard::GetNumber("P Gain", kp);
+    ki = frc::SmartDashboard::GetNumber("I Gain", ki);
+    kd = frc::SmartDashboard::GetNumber("D Gain", kd);
+    iz = frc::SmartDashboard::GetNumber("I Zone", iz);
+    ff = frc::SmartDashboard::GetNumber("Feed Forward", ff);
+    max = frc::SmartDashboard::GetNumber("Max Output", max);
+    min = frc::SmartDashboard::GetNumber("Min Output", min);
+
     flController.SetP(kp);
     flController.SetI(ki);
     flController.SetD(kd);
     flController.SetIZone(iz);
     flController.SetFF(ff);
     flController.SetOutputRange(min, max);
-    flController.SetReference(setPt, rev::ControlType::kPosition);
 
     frController.SetP(kp);
     frController.SetI(ki);
@@ -39,7 +40,6 @@ int PIDDriver::drive(bool testing) {
     frController.SetIZone(iz);
     frController.SetFF(ff);
     frController.SetOutputRange(min, max);
-    frController.SetReference(setPt, rev::ControlType::kPosition);
 
     blController.SetP(kp);
     blController.SetI(ki);
@@ -47,7 +47,6 @@ int PIDDriver::drive(bool testing) {
     blController.SetIZone(iz);
     blController.SetFF(ff);
     blController.SetOutputRange(min, max);
-    blController.SetReference(setPt, rev::ControlType::kPosition);
 
     brController.SetP(kp);
     brController.SetI(ki);
@@ -55,5 +54,28 @@ int PIDDriver::drive(bool testing) {
     brController.SetIZone(iz);
     brController.SetFF(ff);
     brController.SetOutputRange(min, max);
-    brController.SetReference(setPt, rev::ControlType::kPosition);
+}
+
+void PIDDriver::drive(double distance)
+{
+    flController.SetReference(distance, rev::ControlType::kPosition);
+    frController.SetReference(distance, rev::ControlType::kPosition);
+    blController.SetReference(distance, rev::ControlType::kPosition);
+    brController.SetReference(distance, rev::ControlType::kPosition);
+}
+
+void PIDDriver::stop()
+{
+    PIDDriver::drive(flEncoder.GetPosition());
+}
+
+void PIDDriver::display()
+{
+    frc::SmartDashboard::PutNumber("P Gain", kp);
+    frc::SmartDashboard::PutNumber("I Gain", ki);
+    frc::SmartDashboard::PutNumber("D Gain", kd);
+    frc::SmartDashboard::PutNumber("I Zone", iz);
+    frc::SmartDashboard::PutNumber("Feed Forward", ff);
+    frc::SmartDashboard::PutNumber("Max Output", max);
+    frc::SmartDashboard::PutNumber("Min Output", min);
 }
