@@ -64,6 +64,17 @@ void PIDDriver::drive(double distance)
     brController.SetReference(distance, rev::ControlType::kPosition);
 }
 
+void PIDDriver::arc(double r, double a, int dir) {
+    dir = abs(dir) / dir;
+    double left = a * (r + dir * axleLen / 2);
+    double right = a * (r - dir * axleLen / 2);
+
+    flController.SetReference(left, rev::ControlType::kPosition);
+    frController.SetReference(right, rev::ControlType::kPosition);
+    blController.SetReference(left, rev::ControlType::kPosition);
+    brController.SetReference(right, rev::ControlType::kPosition);
+}
+
 void PIDDriver::stop()
 {
     PIDDriver::drive(flEncoder.GetPosition());

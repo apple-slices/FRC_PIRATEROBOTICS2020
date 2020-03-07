@@ -12,6 +12,7 @@ private:
     const int frMotorID = 3;
     const int blMotorID = 0;
     const int brMotorID = 0;
+    const double axleLen = 0.0;
 
     // fl, fr, bl, br = front left, front right, back left, back right
     rev::CANSparkMax flMotor = rev::CANSparkMax(flMotorID, rev::CANSparkMax::MotorType::kBrushless);
@@ -46,6 +47,11 @@ public:
     PIDDriver();
 
     void drive(double distance);
+    
+    // neg. direction = turn counterclockwise
+    // pos. direction = turn clockwise
+    // angle in radians
+    void arc(double radius, double angle, int direction);
     void stop();
 
     void display();
