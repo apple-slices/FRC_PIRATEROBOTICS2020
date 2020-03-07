@@ -16,7 +16,8 @@ void Robot::AutonomousInit() {
 }
 void Robot::AutonomousPeriodic() {
     pid.read();
-    pid.drive(5.0);
+    pid.drive(10.0);
+  //pid.arc(5, 3.14159 / 2, 1);
 }
 
 void Robot::TeleopInit() {}

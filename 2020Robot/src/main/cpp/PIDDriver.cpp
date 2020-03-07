@@ -27,6 +27,11 @@ void PIDDriver::read()
     max = frc::SmartDashboard::GetNumber("Max Output", max);
     min = frc::SmartDashboard::GetNumber("Min Output", min);
 
+    frc::SmartDashboard::PutNumber("FL position", flEncoder.GetPosition);
+    frc::SmartDashboard::PutNumber("FR position", frEncoder.GetPosition);
+    frc::SmartDashboard::PutNumber("BL position", blEncoder.GetPosition);
+    frc::SmartDashboard::PutNumber("BR position", brEncoder.GetPosition);
+
     flController.SetP(kp);
     flController.SetI(ki);
     flController.SetD(kd);
