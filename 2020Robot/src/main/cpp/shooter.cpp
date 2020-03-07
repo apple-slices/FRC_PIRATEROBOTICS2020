@@ -65,8 +65,6 @@ void Shooter::read()
     min = frc::SmartDashboard::GetNumber("Min Output", 0.0);
     targetVel = frc::SmartDashboard::GetNumber("Set Rotations", 0.0);
 
-    frc::SmartDashboard::PutNumber("FL motor position", encoder1.GetPosition());
-    frc::SmartDashboard::PutNumber("FR motor position", encoder1.GetPosition());
-    frc::SmartDashboard::PutNumber("FL moter velocity", encoder2.GetVelocity());
-    frc::SmartDashboard::PutNumber("FR moter velocity", encoder2.GetVelocity());
+    frc::SmartDashboard::PutNumber("motor1 speed", encoder1.GetVelocity());
+    frc::SmartDashboard::PutNumber("motor2 speed", encoder2.GetVelocity());
 }
