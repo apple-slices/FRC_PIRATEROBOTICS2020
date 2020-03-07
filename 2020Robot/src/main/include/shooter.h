@@ -5,11 +5,9 @@
 #include "rev/CANEncoder.h"
 #include "rev/CANPIDController.h"
 
-class Shooter {
+class Shooter
+{
 private:
-    const int motor1ID = 12;
-    const int motor2ID = 3;
-
     rev::CANSparkMax motor1 = rev::CANSparkMax(motor1ID, rev::CANSparkMax::MotorType::kBrushless);
     rev::CANSparkMax motor2 = rev::CANSparkMax(motor2ID, rev::CANSparkMax::MotorType::kBrushless);
 
@@ -29,13 +27,18 @@ private:
     double ff = 0.0;
     double min = 0.0;
     double max = 0.0;
-    double setPt = 0.0;
+    double targetVel = 0.0;
+    double tolerance = 1.0;
 
 public:
-    int spinShooter(bool testing = false);
-    void setSpeed(double speed) {
-        setPt = speed;
-        motor1.RestoreFactoryDefaults();
-        motor2.RestoreFactoryDefaults();
-    }
+    const static int motor1ID = 12;
+    const static int motor2ID = 3;
+    const static int onBtnID = 0;
+
+    Shooter();
+    void shooterOn();
+    void shooterOff();
+    void setSpeed(double speed);
+    void display();
+    void read();
 };

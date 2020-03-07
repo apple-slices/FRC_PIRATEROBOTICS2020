@@ -26,14 +26,15 @@
 //PHHS includes
 #include <chrono>
 
-class Robot : public frc::TimedRobot {
+class Robot : public frc::TimedRobot
+{
 private:
+  frc::Joystick m_stick{0};
+  Shooter shooter;
 
- frc::Joystick  m_stick{0};
-
- public:
+public:
   void RobotInit() override;
-
+  
   void AutonomousInit() override;
   void AutonomousPeriodic() override;
 

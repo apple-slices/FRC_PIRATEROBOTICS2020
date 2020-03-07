@@ -15,28 +15,19 @@ void Robot::RobotInit() {}
 void Robot::AutonomousInit() {}
 void Robot::AutonomousPeriodic() {}
 
-void Robot::TeleopInit() {}
+void Robot::TeleopInit() {
+    shooter.setSpeed(5.0);
+    shooter.display();
+}
 void Robot::TeleopPeriodic() 
 {
-   
-
-    if(m_stick.GetRawButton(PHHSShooter::kShooterMotorOnBtn))
+   shooter.read();
+    if(m_stick.GetRawButton(Shooter::onBtnID))
     {
-        shooter.shooterOn(PHHSShooter::kShooterMotor1);
-
-        shooter.shooterOn(PHHSShooter::kShooterMotor2);
+        shooter.shooterOn();
+    } else {
+        shooter.shooterOff();
     }
-    
-    
-    if(m_stick.GetRawButton(PHHSShooter::kShooterMotorOffBtn))
-    {
-        shooter.shooterOff(PHHSShooter::kShooterMotorOff);
-    }
-   
-
-    
-
-    
 }
 
 void Robot::TestInit() {}
