@@ -56,16 +56,7 @@ void Robot::TeleopPeriodic() {
         climb.ClimbDown(m_solenoid);
     }
 
-   /* if(m_compressor.GetRawButton(PHHSClimb::kCompressorOnBtn))
-    {
-        climb.CompressorOn(PHHSClimb::kOn);
-    }
-
-    if(m_compressor.GetRawButton(PHHSClimb::kCompressorOffBtn))
-    {
-        climb.CompressorOff(PHHSClimb::kOff);
-    }
-*/
+   
 } 
 
 void Robot::TestInit() {}
